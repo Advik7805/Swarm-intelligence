@@ -56,11 +56,16 @@ Keep both handy — you'll paste them into Render's dashboard (never into Git!).
 ## Step 2 — Deploy the frontend on Vercel (5 min)
 
 1. Go to https://vercel.com/new and import `Swarm-intelligence`.
-2. Vercel auto-detects Vite. Set:
-   * **Root Directory:** `frontend`
-   * (vercel.json handles build + API rewrites automatically)
+2. **Leave "Root Directory" empty (repo root)** — `vercel.json` at the root
+   already configures the build (`frontend/` → `dist/`) and the `/api/*`
+   proxy to Render. Framework preset: *Other*.
 3. Click **Deploy** → wait ~2 min.
 4. Your site is LIVE at `https://<your-project>.vercel.app` 🎉
+
+> ⚠️ **Backend URL sync:** `vercel.json` proxies `/api/*` to
+> `https://hivemind-api.onrender.com`. If Render gave your backend a
+> different URL (happens when the name is taken), update that one line in
+> `vercel.json` and redeploy — or tell your agent the URL and let them push it.
 
 ## Step 3 — Verify
 
