@@ -7,7 +7,7 @@
       <!-- 中间步骤指示器 -->
       <div class="nav-center">
         <div class="step-badge">STEP 01</div>
-        <div class="step-name">图谱构建</div>
+        <div class="step-name">{{ $t('process.stepGraphBuild') }}</div>
       </div>
 
       <div class="nav-status">
@@ -23,13 +23,13 @@
         <div class="panel-header">
           <div class="header-left">
             <span class="header-deco">◆</span>
-            <span class="header-title">实时知识图谱</span>
+            <span class="header-title">{{ $t('process.liveGraph') }}</span>
           </div>
           <div class="header-right">
             <template v-if="graphData">
-              <span class="stat-item">{{ graphData.node_count || graphData.nodes?.length || 0 }} 节点</span>
+              <span class="stat-item">{{ graphData.node_count || graphData.nodes?.length || 0 }} {{ $t('process.nodes') }}</span>
               <span class="stat-divider">|</span>
-              <span class="stat-item">{{ graphData.edge_count || graphData.edges?.length || 0 }} 关系</span>
+              <span class="stat-item">{{ graphData.edge_count || graphData.edges?.length || 0 }} {{ $t('process.edges') }}</span>
               <span class="stat-divider">|</span>
             </template>
             <div class="action-buttons">
@@ -200,7 +200,7 @@
               <div class="loading-ring"></div>
               <div class="loading-ring"></div>
             </div>
-            <p class="waiting-text">图谱构建中</p>
+            <p class="waiting-text">{{ $t('process.building') }}</p>
             <p class="waiting-hint">数据即将显示...</p>
           </div>
           
@@ -246,7 +246,7 @@
               <div class="detail-section">
                 <div class="detail-label">接口说明</div>
                 <div class="detail-content">
-                  上传文档后，LLM分析文档内容，自动生成适合舆论模拟的本体结构（实体类型 + 关系类型）
+                  {{ $t('process.ontologyExplainer') }}
                 </div>
               </div>
               
@@ -274,7 +274,7 @@
               </div>
               
               <div class="detail-section" v-if="projectData?.ontology">
-                <div class="detail-label">生成的关系类型 ({{ projectData.ontology.relation_types?.length || 0 }})</div>
+                <div class="detail-label">{{ $t('process.relationTypes') }} ({{ projectData.ontology.relation_types?.length || 0 }})</div>
                 <div class="relation-list">
                   <div 
                     v-for="(rel, idx) in projectData.ontology.relation_types?.slice(0, 5) || []" 
@@ -288,7 +288,7 @@
                     <span class="rel-target">{{ rel.target_type }}</span>
                   </div>
                   <div v-if="(projectData.ontology.relation_types?.length || 0) > 5" class="relation-more">
-                    +{{ projectData.ontology.relation_types.length - 5 }} 更多关系...
+                    +{{ projectData.ontology.relation_types.length - 5 }} {{ $t('process.more') }}...
                   </div>
                 </div>
               </div>
@@ -305,7 +305,7 @@
             <div class="phase-header">
               <span class="phase-num">02</span>
               <div class="phase-info">
-                <div class="phase-title">图谱构建</div>
+                <div class="phase-title">{{ $t('process.stepGraphBuild') }}</div>
                 <div class="phase-api">/api/graph/build</div>
               </div>
               <span class="phase-status" :class="getPhaseStatusClass(1)">
@@ -317,7 +317,7 @@
               <div class="detail-section">
                 <div class="detail-label">接口说明</div>
                 <div class="detail-content">
-                  基于生成的本体，将文档分块后调用 Zep API 构建知识图谱，提取实体和关系
+                  {{ $t('process.graphBuildExplainer') }}
                 </div>
               </div>
               
@@ -343,11 +343,11 @@
                 <div class="build-result">
                   <div class="result-item">
                     <span class="result-value">{{ graphData.node_count }}</span>
-                    <span class="result-label">实体节点</span>
+                    <span class="result-label">{{ $t('step1.entityNodes') }}</span>
                   </div>
                   <div class="result-item">
                     <span class="result-value">{{ graphData.edge_count }}</span>
-                    <span class="result-label">关系边</span>
+                    <span class="result-label">{{ $t('step1.relationEdges') }}</span>
                   </div>
                   <div class="result-item">
                     <span class="result-value">{{ entityTypes.length }}</span>
@@ -412,12 +412,14 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { generateOntology, getProject, buildGraph, getTaskStatus, getGraphData } from '../api/graph'
 import { getPendingUpload, clearPendingUpload } from '../store/pendingUpload'
 import * as d3 from 'd3'
 
+const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 
@@ -451,11 +453,11 @@ const statusClass = computed(() => {
 })
 
 const statusText = computed(() => {
-  if (error.value) return '构建失败'
-  if (currentPhase.value >= 2) return '构建完成'
-  if (currentPhase.value === 1) return '图谱构建中'
-  if (currentPhase.value === 0) return '本体生成中'
-  return '初始化中'
+  if (error.value) return t('process.buildFailed')
+  if (currentPhase.value >= 2) return t('process.buildDone')
+  if (currentPhase.value === 1) return t('process.building')
+  if (currentPhase.value === 0) return t('process.ontologyGen')
+  return t('process.initializing')
 })
 
 const entityTypes = computed(() => {
@@ -482,7 +484,7 @@ const goHome = () => {
 
 const goToNextStep = () => {
   // TODO: 进入环境搭建步骤
-  alert('环境搭建功能开发中...')
+  alert(t('process.envWip'))
 }
 
 const toggleFullScreen = () => {
@@ -540,14 +542,14 @@ const getPhaseStatusClass = (phase) => {
 }
 
 const getPhaseStatusText = (phase) => {
-  if (currentPhase.value > phase) return '已完成'
+  if (currentPhase.value > phase) return t('process.statusDone')
   if (currentPhase.value === phase) {
     if (phase === 1 && buildProgress.value) {
       return `${buildProgress.value.progress}%`
     }
-    return '进行中'
+    return t('process.statusInProgress')
   }
-  return '等待中'
+  return t('process.statusWaiting')
 }
 
 // 初始化 - 处理新建项目或加载已有项目
@@ -569,7 +571,7 @@ const handleNewProject = async () => {
   const pending = getPendingUpload()
   
   if (!pending.isPending || pending.files.length === 0) {
-    error.value = '没有待上传的文件，请返回首页重新操作'
+    error.value = t('process.noPendingFiles')
     loading.value = false
     return
   }
@@ -577,7 +579,7 @@ const handleNewProject = async () => {
   try {
     loading.value = true
     currentPhase.value = 0 // 本体生成阶段
-    ontologyProgress.value = { message: '正在上传文件并分析文档...' }
+    ontologyProgress.value = { message: t('process.uploadingAnalyzing') }
     
     // 构建 FormData
     const formDataObj = new FormData()
@@ -608,11 +610,11 @@ const handleNewProject = async () => {
       // 自动开始图谱构建
       await startBuildGraph()
     } else {
-      error.value = response.error || '本体生成失败'
+      error.value = response.error || t('process.ontologyFailed')
     }
   } catch (err) {
     console.error('Handle new project error:', err)
-    error.value = '项目初始化失败: ' + (err.message || '未知错误')
+    error.value = t('process.initFailed') + ': ' + (err.message || t('common.unknownError'))
   } finally {
     loading.value = false
   }
@@ -645,11 +647,11 @@ const loadProject = async () => {
         await loadGraph(response.data.graph_id)
       }
     } else {
-      error.value = response.error || '加载项目失败'
+      error.value = response.error || t('process.loadFailed')
     }
   } catch (err) {
     console.error('Load project error:', err)
-    error.value = '加载项目失败: ' + (err.message || '未知错误')
+    error.value = t('process.loadFailed') + ': ' + (err.message || t('common.unknownError'))
   } finally {
     loading.value = false
   }
@@ -668,7 +670,7 @@ const updatePhaseByStatus = (status) => {
       currentPhase.value = 2
       break
     case 'failed':
-      error.value = projectData.value?.error || '处理失败'
+      error.value = projectData.value?.error || t('process.processFailed')
       break
   }
 }
@@ -680,7 +682,7 @@ const startBuildGraph = async () => {
     // 设置初始进度
     buildProgress.value = {
       progress: 0,
-      message: '正在启动图谱构建...'
+      message: t('process.startingBuild')
     }
     
     const response = await buildGraph({ project_id: currentProjectId.value })
@@ -697,7 +699,7 @@ const startBuildGraph = async () => {
         return
       }
 
-      buildProgress.value.message = '图谱构建任务已启动...'
+      buildProgress.value.message = t('process.buildStarted')
       
       // 保存 task_id 用于轮询
       const taskId = response.data.task_id
@@ -705,12 +707,12 @@ const startBuildGraph = async () => {
       // 启动任务状态轮询
       startPollingTask(taskId)
     } else {
-      error.value = response.error || '启动图谱构建失败'
+      error.value = response.error || t('process.startBuildFailed')
       buildProgress.value = null
     }
   } catch (err) {
     console.error('Build graph error:', err)
-    error.value = '启动图谱构建失败: ' + (err.message || '未知错误')
+    error.value = t('process.startBuildFailed') + ': ' + (err.message || t('common.unknownError'))
     buildProgress.value = null
   }
 }
@@ -799,13 +801,13 @@ const pollTaskStatus = async (taskId) => {
       // 更新进度显示
       buildProgress.value = {
         progress: task.progress || 0,
-        message: task.message || '处理中...'
+        message: task.message || t('process.processing')
       }
       
       console.log('Task status:', task.status, 'Progress:', task.progress)
       
       if (task.status === 'completed') {
-        console.log('✅ 图谱构建完成，正在加载完整数据...')
+        console.log('graph build complete, loading full data...')
         
         stopPolling()
         stopGraphPolling()
@@ -814,7 +816,7 @@ const pollTaskStatus = async (taskId) => {
         // 更新进度显示为完成状态
         buildProgress.value = {
           progress: 100,
-          message: '构建完成，正在加载图谱...'
+          message: t('process.buildDoneLoading')
         }
         
         // 重新加载项目数据获取 graph_id
@@ -824,9 +826,9 @@ const pollTaskStatus = async (taskId) => {
           
           // 最终加载完整图谱数据
           if (projectResponse.data.graph_id) {
-            console.log('📊 加载完整图谱:', projectResponse.data.graph_id)
+            console.log('loading full graph:', projectResponse.data.graph_id)
             await loadGraph(projectResponse.data.graph_id)
-            console.log('✅ 图谱加载完成')
+            console.log('graph loaded')
           }
         }
         
@@ -835,7 +837,7 @@ const pollTaskStatus = async (taskId) => {
       } else if (task.status === 'failed') {
         stopPolling()
         stopGraphPolling()
-        error.value = '图谱构建失败: ' + (task.error || '未知错误')
+        error.value = t('process.buildFailed') + ': ' + (task.error || t('common.unknownError'))
         buildProgress.value = null
       }
     }
@@ -913,7 +915,7 @@ const renderGraph = () => {
       .attr('y', height / 2)
       .attr('text-anchor', 'middle')
       .attr('fill', '#999')
-      .text('等待图谱数据...')
+      .text(t('process.waitingGraph'))
     return
   }
   
@@ -925,7 +927,7 @@ const renderGraph = () => {
   
   const nodes = nodesData.map(n => ({
     id: n.uuid,
-    name: n.name || '未命名',
+    name: n.name || t('process.unnamed'),
     type: n.labels?.find(l => l !== 'Entity' && l !== 'Node') || 'Entity',
     rawData: n // 保存原始数据
   }))
@@ -941,8 +943,8 @@ const renderGraph = () => {
       type: e.fact_type || e.name || 'RELATED_TO',
       rawData: {
         ...e,
-        source_name: nodeMap[e.source_node_uuid]?.name || '未知',
-        target_name: nodeMap[e.target_node_uuid]?.name || '未知'
+        source_name: nodeMap[e.source_node_uuid]?.name || t('process.unknown'),
+        target_name: nodeMap[e.target_node_uuid]?.name || t('process.unknown')
       }
     }))
   

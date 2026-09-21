@@ -738,5 +738,73 @@
     "sigAmplify": "放大传播",
     "sigSentiment": "平均情感",
     "footer": "HiveMind Analytics — 舆论动力学 · 社会网络分析 · 预测置信度。AGPL-3.0。"
+  },
+  "process": {
+    "stepGraphBuild": "图谱构建",
+    "liveGraph": "实时知识图谱",
+    "nodes": "节点",
+    "edges": "关系",
+    "building": "图谱构建中…",
+    "ontologyExplainer": "上传文档后，LLM 分析文档内容，自动生成适合舆论模拟的本体结构（实体类型 + 关系类型）。",
+    "graphBuildExplainer": "基于生成的本体，将文档分块后调用 Zep API 构建知识图谱，提取实体和关系。",
+    "relationTypes": "生成的关系类型",
+    "more": "更多",
+    "ontologyGen": "本体生成中…",
+    "initializing": "初始化中…",
+    "envWip": "环境搭建功能开发中…",
+    "statusDone": "已完成",
+    "statusInProgress": "进行中",
+    "statusWaiting": "等待中",
+    "noPendingFiles": "没有待上传的文件，请返回首页重新操作。",
+    "uploadingAnalyzing": "正在上传文件并分析文档…",
+    "ontologyFailed": "本体生成失败",
+    "initFailed": "项目初始化失败",
+    "loadFailed": "加载项目失败",
+    "processFailed": "处理失败",
+    "processing": "处理中…",
+    "startingBuild": "正在启动图谱构建…",
+    "buildStarted": "图谱构建任务已启动…",
+    "startBuildFailed": "启动图谱构建失败",
+    "buildDone": "构建完成",
+    "buildFailed": "构建失败",
+    "buildDoneLoading": "构建完成 — 正在加载图谱…",
+    "waitingGraph": "等待图谱数据…",
+    "unnamed": "未命名",
+    "unknown": "未知"
+  },
+  "step1x": {
+    "missingProjectOrGraph": "缺少项目或图谱信息",
+    "createFailed": "创建模拟失败"
+  },
+  "step2x": {
+    "stagePersonas": "生成Agent人设",
+    "stageConfig": "生成模拟配置",
+    "stageScripts": "准备模拟脚本",
+    "pollFailed": "轮询状态失败",
+    "profilesFailed": "获取 Profiles 失败",
+    "configFailed": "获取 Config 失败"
+  },
+  "step3x": {
+    "startFailed": "启动失败",
+    "runStatusFailed": "获取运行状态失败",
+    "detailStatusFailed": "获取详细状态失败"
+  },
+  "step4x": {
+    "noReplyPlatform": "（该平台未获得回复）",
+    "noReply": "[无回复]",
+    "selectionReason": "选择理由",
+    "waitingStart": "等待开始",
+    "error": "错误",
+    "warning": "警告"
+  },
+  "step5x": {
+    "interviewer": "提问者",
+    "you": "你"
+  },
+  "historyDBx": {
+    "loadFailed": "加载历史项目失败"
+  },
+  "simx": {
+    "checkFailed": "检查模拟状态失败"
   }
 }

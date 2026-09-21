@@ -18,19 +18,19 @@
     <div class="main-content">
       <!-- 上半部分：Hero 区域 -->
       <section class="hero-section">
-        <SwarmCanvas />
+        <Hive3D />
         <div class="hero-left">
-          <div class="tag-row">
+          <div class="tag-row hm-rise hm-rise-1">
             <span class="orange-tag">{{ $t('home.tagline') }}</span>
             <span class="version-text">{{ $t('home.version') }}</span>
           </div>
           
-          <h1 class="main-title">
+          <h1 class="main-title hm-rise hm-rise-2">
             {{ $t('home.heroTitle1') }}<br>
             <span class="gradient-text">{{ $t('home.heroTitle2') }}</span>
           </h1>
           
-          <div class="hero-desc">
+          <div class="hero-desc hm-rise hm-rise-3">
             <p>
               <i18n-t keypath="home.heroDesc" tag="span">
                 <template #brand><span class="highlight-bold">{{ $t('home.heroDescBrand') }}</span></template>
@@ -47,11 +47,11 @@
         </div>
         
         <div class="hero-right">
-          <!-- Logo 区域 -->
-          <div class="logo-container">
-            <img src="../assets/logo/hivemind_logo_left.png" alt="HiveMind Logo" class="hero-logo" />
+          <!-- 3D hive scene renders behind (absolute); keep a quiet corner action -->
+          <div class="hero-badge" v-reveal="250">
+            <span class="hm-chip">{{ $t('home.slogan') }}</span>
           </div>
-          
+
           <button class="scroll-down-btn" @click="scrollToBottom">
             ↓
           </button>
@@ -61,7 +61,7 @@
       <!-- 下半部分：双栏布局 -->
       <section class="dashboard-section">
         <!-- 左栏：状态与步骤 -->
-        <div class="left-panel">
+        <div class="left-panel" v-reveal>
           <div class="panel-header">
             <span class="status-dot">■</span> {{ $t('home.systemStatus') }}
           </div>
@@ -73,11 +73,11 @@
           
           <!-- 数据指标卡片 -->
           <div class="metrics-row">
-            <div class="metric-card">
+            <div class="metric-card" v-reveal="200">
               <div class="metric-value">{{ $t('home.metricLowCost') }}</div>
               <div class="metric-label">{{ $t('home.metricLowCostDesc') }}</div>
             </div>
-            <div class="metric-card">
+            <div class="metric-card" v-reveal="200">
               <div class="metric-value">{{ $t('home.metricHighAvail') }}</div>
               <div class="metric-label">{{ $t('home.metricHighAvailDesc') }}</div>
             </div>
@@ -89,35 +89,35 @@
                <span class="diamond-icon">◇</span> {{ $t('home.workflowSequence') }}
             </div>
             <div class="workflow-list">
-              <div class="workflow-item">
+              <div class="workflow-item" v-reveal>
                 <span class="step-num">01</span>
                 <div class="step-info">
                   <div class="step-title">{{ $t('home.step01Title') }}</div>
                   <div class="step-desc">{{ $t('home.step01Desc') }}</div>
                 </div>
               </div>
-              <div class="workflow-item">
+              <div class="workflow-item" v-reveal>
                 <span class="step-num">02</span>
                 <div class="step-info">
                   <div class="step-title">{{ $t('home.step02Title') }}</div>
                   <div class="step-desc">{{ $t('home.step02Desc') }}</div>
                 </div>
               </div>
-              <div class="workflow-item">
+              <div class="workflow-item" v-reveal>
                 <span class="step-num">03</span>
                 <div class="step-info">
                   <div class="step-title">{{ $t('home.step03Title') }}</div>
                   <div class="step-desc">{{ $t('home.step03Desc') }}</div>
                 </div>
               </div>
-              <div class="workflow-item">
+              <div class="workflow-item" v-reveal>
                 <span class="step-num">04</span>
                 <div class="step-info">
                   <div class="step-title">{{ $t('home.step04Title') }}</div>
                   <div class="step-desc">{{ $t('home.step04Desc') }}</div>
                 </div>
               </div>
-              <div class="workflow-item">
+              <div class="workflow-item" v-reveal>
                 <span class="step-num">05</span>
                 <div class="step-info">
                   <div class="step-title">{{ $t('home.step05Title') }}</div>
@@ -129,7 +129,7 @@
         </div>
 
         <!-- 右栏：交互控制台 -->
-        <div class="right-panel">
+        <div class="right-panel" v-reveal="120">
           <div class="console-box">
             <!-- 上传区域 -->
             <div class="console-section">
@@ -386,6 +386,9 @@ const startSimulation = () => {
   position: relative;
   overflow: hidden;
   border-radius: 0 0 24px 24px;
+  min-height: 540px;
+  align-items: center;
+  padding: 40px 0;
 }
 
 .hero-left,
@@ -509,17 +512,15 @@ const startSimulation = () => {
   align-items: flex-end;
 }
 
-.logo-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 40px;
+.hero-badge {
+  position: absolute;
+  top: 24px;
+  right: 40px;
+  max-width: 420px;
+  text-align: right;
 }
 
-.hero-logo {
-  max-width: 500px; /* 调整logo大小 */
-  width: 100%;
-}
+
 
 .scroll-down-btn {
   width: 40px;
@@ -887,12 +888,13 @@ const startSimulation = () => {
     padding-right: 0;
     margin-bottom: 40px;
   }
-  
-  .hero-logo {
-    max-width: 200px;
-    margin-bottom: 20px;
-  }
 }
+/* workflow stagger */
+.workflow-item:nth-child(1) { transition-delay: 0.05s; }
+.workflow-item:nth-child(2) { transition-delay: 0.12s; }
+.workflow-item:nth-child(3) { transition-delay: 0.19s; }
+.workflow-item:nth-child(4) { transition-delay: 0.26s; }
+.workflow-item:nth-child(5) { transition-delay: 0.33s; }
 </style>
 
 <style>

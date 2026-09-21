@@ -151,6 +151,34 @@ body {
   border: 1px solid var(--hm-border);
   border-radius: 12px;
 }
+
+/* ---------- motion system ---------- */
+/* scroll reveal (v-reveal directive) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.revealed { opacity: 1; transform: none; }
+
+/* entrance keyframes for hero elements */
+@keyframes hm-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+.hm-rise { animation: hm-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hm-rise-1 { animation-delay: 0.05s; }
+.hm-rise-2 { animation-delay: 0.18s; }
+.hm-rise-3 { animation-delay: 0.32s; }
+.hm-rise-4 { animation-delay: 0.46s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hm-rise, .hm-rise-1, .hm-rise-2, .hm-rise-3, .hm-rise-4 { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
 .hm-chip {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 3px 10px; border-radius: 999px;

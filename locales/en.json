@@ -738,5 +738,73 @@
     "sigAmplify": "Amplification",
     "sigSentiment": "Avg sentiment",
     "footer": "HiveMind Analytics — opinion dynamics, social network analysis & prediction confidence. AGPL-3.0."
+  },
+  "process": {
+    "stepGraphBuild": "Graph Build",
+    "liveGraph": "Live Knowledge Graph",
+    "nodes": "nodes",
+    "edges": "edges",
+    "building": "Building graph…",
+    "ontologyExplainer": "After upload, an LLM analyzes the document and auto-generates an ontology (entity types + relation types) tailored for opinion simulation.",
+    "graphBuildExplainer": "Based on the generated ontology, the document is auto-chunked and sent to the Zep API to build the knowledge graph, extracting entities and relations.",
+    "relationTypes": "Generated relation types",
+    "more": "more",
+    "ontologyGen": "Generating ontology…",
+    "initializing": "Initializing…",
+    "envWip": "Environment setup coming soon…",
+    "statusDone": "Completed",
+    "statusInProgress": "In progress",
+    "statusWaiting": "Waiting",
+    "noPendingFiles": "No files pending upload — please go back to the home page.",
+    "uploadingAnalyzing": "Uploading files and analyzing documents…",
+    "ontologyFailed": "Ontology generation failed",
+    "initFailed": "Project initialization failed",
+    "loadFailed": "Failed to load project",
+    "processFailed": "Processing failed",
+    "processing": "Processing…",
+    "startingBuild": "Starting graph build…",
+    "buildStarted": "Graph build started…",
+    "startBuildFailed": "Failed to start graph build",
+    "buildDone": "Build complete",
+    "buildFailed": "Build failed",
+    "buildDoneLoading": "Build complete — loading graph…",
+    "waitingGraph": "Waiting for graph data…",
+    "unnamed": "Untitled",
+    "unknown": "Unknown"
+  },
+  "step1x": {
+    "missingProjectOrGraph": "Missing project or graph info",
+    "createFailed": "Simulation creation failed"
+  },
+  "step2x": {
+    "stagePersonas": "Generating agent personas",
+    "stageConfig": "Generating simulation config",
+    "stageScripts": "Preparing simulation scripts",
+    "pollFailed": "Status polling failed",
+    "profilesFailed": "Failed to load profiles",
+    "configFailed": "Failed to load config"
+  },
+  "step3x": {
+    "startFailed": "Start failed",
+    "runStatusFailed": "Failed to get run status",
+    "detailStatusFailed": "Failed to get detailed status"
+  },
+  "step4x": {
+    "noReplyPlatform": "(this platform received no reply)",
+    "noReply": "[no reply]",
+    "selectionReason": "Selection reason",
+    "waitingStart": "Waiting to start",
+    "error": "Error",
+    "warning": "Warning"
+  },
+  "step5x": {
+    "interviewer": "Interviewer",
+    "you": "You"
+  },
+  "historyDBx": {
+    "loadFailed": "Failed to load history projects"
+  },
+  "simx": {
+    "checkFailed": "Failed to check simulation status"
   }
 }

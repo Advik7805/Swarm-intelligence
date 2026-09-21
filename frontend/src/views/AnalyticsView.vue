@@ -36,17 +36,17 @@
           <p class="run-id">{{ data.simulation_id }}</p>
         </div>
         <div class="head-stats">
-          <div class="stat"><span class="v">{{ data.run.n_agents }}</span><span class="l">{{ $t('analytics.agents') }}</span></div>
-          <div class="stat"><span class="v">{{ data.run.n_rounds }}</span><span class="l">{{ $t('analytics.rounds') }}</span></div>
-          <div class="stat"><span class="v">{{ data.run.n_posts }}</span><span class="l">{{ $t('analytics.posts') }}</span></div>
-          <div class="stat"><span class="v">{{ fmtPct(sentimentSummary.negative_share) }}</span><span class="l">{{ $t('analytics.negative') }}</span></div>
+          <div class="stat"><span class="v">{{ agentsShown }}</span><span class="l">{{ $t('analytics.agents') }}</span></div>
+          <div class="stat"><span class="v">{{ roundsShown }}</span><span class="l">{{ $t('analytics.rounds') }}</span></div>
+          <div class="stat"><span class="v">{{ postsShown }}</span><span class="l">{{ $t('analytics.posts') }}</span></div>
+          <div class="stat"><span class="v">{{ negShown }}%</span><span class="l">{{ $t('analytics.negative') }}</span></div>
         </div>
       </header>
 
       <!-- grid -->
       <div class="grid">
         <!-- confidence -->
-        <section class="card span-4">
+        <section v-reveal="0" class="card span-4">
           <h2 class="card-title">{{ $t('analytics.confidenceTitle') }}</h2>
           <p class="card-sub">{{ $t('analytics.confidenceSub') }}</p>
           <ConfidenceGauge :score="confidence.score || 0" :band="confidence.band || 'low'"
@@ -54,7 +54,7 @@
         </section>
 
         <!-- sentiment timeline -->
-        <section class="card span-5">
+        <section v-reveal="60" class="card span-5">
           <h2 class="card-title">{{ $t('analytics.sentimentTitle') }}</h2>
           <p class="card-sub">{{ $t('analytics.sentimentSub') }}</p>
           <svg :viewBox="`0 0 460 220`" class="timeline-svg">
@@ -93,7 +93,7 @@
         </section>
 
         <!-- emotions -->
-        <section class="card span-3">
+        <section v-reveal="120" class="card span-3">
           <h2 class="card-title">{{ $t('analytics.emotionTitle') }}</h2>
           <p class="card-sub">{{ $t('analytics.emotionSub') }}</p>
           <div class="emotion-list">
@@ -108,7 +108,7 @@
         </section>
 
         <!-- network -->
-        <section class="card span-7">
+        <section v-reveal="180" class="card span-7">
           <h2 class="card-title">{{ $t('analytics.networkTitle') }}</h2>
           <p class="card-sub">
             {{ $t('analytics.networkSub') }}
@@ -144,7 +144,7 @@
         </section>
 
         <!-- personas -->
-        <section class="card span-12">
+        <section v-reveal="240" class="card span-12">
           <h2 class="card-title">{{ $t('analytics.personasTitle') }}</h2>
           <p class="card-sub">{{ $t('analytics.personasSub') }}</p>
           <div class="persona-grid">
@@ -196,11 +196,21 @@ import NetworkGraph from '../components/NetworkGraph.vue'
 import ConfidenceGauge from '../components/ConfidenceGauge.vue'
 
 const { t } = useI18n()
+import { useCountUp } from '../composables/useCountUp'
 const loading = ref(false)
 const error = ref('')
 const data = ref(null)
 const runs = ref([])
 const selectedRun = ref('')
+
+const cAgents = useCountUp(() => data.value?.run?.n_agents || 0)
+const cRounds = useCountUp(() => data.value?.run?.n_rounds || 0)
+const cPosts = useCountUp(() => data.value?.run?.n_posts || 0)
+const cNeg = useCountUp(() => Math.round((data.value?.sentiment_summary?.negative_share || 0) * 100))
+const agentsShown = cAgents.shown
+const roundsShown = cRounds.shown
+const postsShown = cPosts.shown
+const negShown = cNeg.shown
 
 const sentimentSummary = computed(() => data.value?.sentiment_summary || {})
 const network = computed(() => data.value?.network || {})
