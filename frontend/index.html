@@ -11,6 +11,40 @@
     <meta name="description" content="HiveMind - A Swarm Intelligence Prediction Engine. Upload seed material, simulate thousands of AI agents, and rehearse the future before making decisions." />
     <meta name="theme-color" content="#0D1117" />
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('hivemind-theme') || 'dark')</script>
+    <script>
+      // Boot-error overlay: if the app fails to start, show the error
+      // on-screen (instead of a silent blank page) and log details.
+      (function () {
+        var shown = false
+        function show(msg) {
+          if (shown) return
+          shown = true
+          try {
+            var d = document.createElement('div')
+            d.style.cssText = 'position:fixed;inset:auto 12px 12px 12px;z-index:99999;' +
+              'background:#161C24;color:#E6EDF3;border:1px solid #E5534B;border-radius:10px;' +
+              'padding:14px 16px;font:12px/1.5 ui-monospace,monospace;max-height:45vh;overflow:auto'
+            d.innerHTML = '<b style="color:#E5534B">HiveMind failed to boot</b><br>' +
+              String(msg).replace(/[<&]/g, function (c) { return c === '<' ? '&lt;' : '&amp;' })
+            document.body ? document.body.appendChild(d)
+              : document.addEventListener('DOMContentLoaded', function () { document.body.appendChild(d) })
+          } catch (e) { /* nothing more we can do */ }
+        }
+        window.addEventListener('error', function (e) {
+          show((e.message || 'Script error') + (e.filename ? '\n' + e.filename + ':' + e.lineno : ''))
+        })
+        window.addEventListener('unhandledrejection', function (e) {
+          show('Unhandled promise rejection: ' + (e.reason && (e.reason.stack || e.reason.message) || e.reason))
+        })
+        setTimeout(function () {
+          var app = document.getElementById('app')
+          if (app && app.children.length === 0) {
+            show('App did not mount (no error caught). Try a hard refresh (Ctrl+Shift+R). ' +
+              'If it persists, check the browser console (F12).')
+          }
+        }, 6000)
+      })()
+    </script>
     <title>HiveMind — Swarm Intelligence Prediction Engine</title>
   </head>
   <body>

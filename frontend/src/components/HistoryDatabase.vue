@@ -460,6 +460,7 @@ const loadHistory = async () => {
 
 // 初始化 IntersectionObserver
 const initObserver = () => {
+  if (typeof IntersectionObserver === 'undefined') return   // very old browsers
   if (observer) {
     observer.disconnect()
   }
