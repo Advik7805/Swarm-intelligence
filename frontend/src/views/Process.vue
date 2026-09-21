@@ -2,7 +2,7 @@
   <div class="process-page">
     <!-- 顶部导航栏 -->
     <nav class="navbar">
-      <div class="nav-brand" @click="goHome">MIROFISH</div>
+      <div class="nav-brand" @click="goHome">HIVEMIND</div>
       
       <!-- 中间步骤指示器 -->
       <div class="nav-center">
@@ -1102,11 +1102,11 @@ onUnmounted(() => {
 /* 变量 */
 :root {
   --black: #000000;
-  --white: #FFFFFF;
-  --orange: #FF6B35;
-  --gray-light: #F5F5F5;
+  --white: var(--white);
+  --orange: var(--orange);
+  --gray-light: var(--gray-light);
   --gray-border: #E0E0E0;
-  --gray-text: #666666;
+  --gray-text: var(--gray-text);
 }
 
 .process-page {
@@ -1123,7 +1123,7 @@ onUnmounted(() => {
   justify-content: space-between;
   padding: 0 24px;
   height: 56px;
-  background: #000;
+  background: var(--black);
   color: #fff;
   z-index: 10;
   position: relative;
@@ -1151,7 +1151,7 @@ onUnmounted(() => {
 }
 
 .step-badge {
-  background: #FF6B35;
+  background: var(--orange);
   color: #fff;
   padding: 2px 8px;
   font-size: 0.7rem;
@@ -1180,7 +1180,7 @@ onUnmounted(() => {
 }
 
 .status-dot.processing {
-  background: #FF6B35;
+  background: var(--orange);
   animation: pulse 1.5s infinite;
 }
 
@@ -1243,7 +1243,7 @@ onUnmounted(() => {
 }
 
 .header-deco {
-  color: #FF6B35;
+  color: var(--orange);
   font-size: 0.8rem;
 }
 
@@ -1297,8 +1297,8 @@ onUnmounted(() => {
 }
 
 .action-btn:hover:not(:disabled) {
-  background: #F5F5F5;
-  color: #000;
+  background: var(--gray-light);
+  color: var(--black);
 }
 
 .action-btn:disabled {
@@ -1353,7 +1353,7 @@ onUnmounted(() => {
 .loading-ring:nth-child(1) {
   width: 80px;
   height: 80px;
-  border-top-color: #000;
+  border-top-color: var(--black);
 }
 
 .loading-ring:nth-child(2) {
@@ -1361,7 +1361,7 @@ onUnmounted(() => {
   height: 60px;
   top: 10px;
   left: 10px;
-  border-right-color: #FF6B35;
+  border-right-color: var(--orange);
   animation-delay: 0.2s;
 }
 
@@ -1422,15 +1422,15 @@ onUnmounted(() => {
   gap: 8px;
   padding: 8px 16px;
   background: rgba(255, 107, 53, 0.1);
-  border: 1px solid #FF6B35;
+  border: 1px solid var(--orange);
   font-size: 0.8rem;
-  color: #FF6B35;
+  color: var(--orange);
 }
 
 .building-dot {
   width: 8px;
   height: 8px;
-  background: #FF6B35;
+  background: var(--orange);
   border-radius: 50%;
   animation: pulse 1s infinite;
 }
@@ -1456,7 +1456,7 @@ onUnmounted(() => {
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
-  background: #FAFAFA;
+  background: var(--gray-light);
   border-bottom: 1px solid #E0E0E0;
 }
 
@@ -1534,7 +1534,7 @@ onUnmounted(() => {
   line-height: 1.6;
   padding: 10px;
   background: #F9F9F9;
-  border-left: 3px solid #FF6B35;
+  border-left: 3px solid var(--orange);
 }
 
 .detail-labels {
@@ -1577,13 +1577,13 @@ onUnmounted(() => {
 .edge-type {
   padding: 2px 8px;
   font-size: 0.75rem;
-  background: #FF6B35;
+  background: var(--orange);
   color: #fff;
 }
 
 .detail-value.highlight {
   font-weight: 600;
-  color: #000;
+  color: var(--black);
 }
 
 .detail-subtitle {
@@ -1656,7 +1656,7 @@ onUnmounted(() => {
   gap: 16px;
   padding: 12px 24px;
   border-top: 1px solid #E0E0E0;
-  background: #FAFAFA;
+  background: var(--gray-light);
 }
 
 .legend-item {
@@ -1700,13 +1700,13 @@ onUnmounted(() => {
 }
 
 .right-panel .panel-header.dark-header {
-  background: #000;
+  background: var(--black);
   color: #fff;
   border-bottom: none;
 }
 
 .right-panel .header-icon {
-  color: #FF6B35;
+  color: var(--orange);
   margin-right: 8px;
 }
 
@@ -1731,7 +1731,7 @@ onUnmounted(() => {
 }
 
 .process-phase.active {
-  border-color: #FF6B35;
+  border-color: var(--orange);
 }
 
 .process-phase.completed {
@@ -1743,7 +1743,7 @@ onUnmounted(() => {
   align-items: flex-start;
   gap: 16px;
   padding: 16px;
-  background: #FAFAFA;
+  background: var(--gray-light);
   border-bottom: 1px solid #E0E0E0;
 }
 
@@ -1763,7 +1763,7 @@ onUnmounted(() => {
 }
 
 .process-phase.active .phase-num {
-  color: #FF6B35;
+  color: var(--orange);
 }
 
 .process-phase.completed .phase-num {
@@ -1794,7 +1794,7 @@ onUnmounted(() => {
 }
 
 .phase-status.active {
-  background: #FF6B35;
+  background: var(--orange);
   color: #fff;
 }
 
@@ -1818,7 +1818,7 @@ onUnmounted(() => {
 .entity-tag {
   font-size: 0.75rem;
   padding: 4px 10px;
-  background: #F5F5F5;
+  background: var(--gray-light);
   border: 1px solid #E0E0E0;
   color: #333;
 }
@@ -1850,7 +1850,7 @@ onUnmounted(() => {
 }
 
 .rel-name {
-  color: #FF6B35;
+  color: var(--orange);
   font-weight: 500;
 }
 
@@ -1874,7 +1874,7 @@ onUnmounted(() => {
   width: 20px;
   height: 20px;
   border: 2px solid #FFE0D6;
-  border-top-color: #FF6B35;
+  border-top-color: var(--orange);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -1907,7 +1907,7 @@ onUnmounted(() => {
 
 .progress-fill {
   height: 100%;
-  background: #FF6B35;
+  background: var(--orange);
   transition: width 0.3s;
 }
 
@@ -1922,7 +1922,7 @@ onUnmounted(() => {
 }
 
 .progress-percent {
-  color: #FF6B35;
+  color: var(--orange);
   font-weight: 600;
 }
 
@@ -1936,14 +1936,14 @@ onUnmounted(() => {
   flex: 1;
   text-align: center;
   padding: 12px;
-  background: #F5F5F5;
+  background: var(--gray-light);
 }
 
 .result-value {
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #000;
+  color: var(--black);
   margin-bottom: 4px;
 }
 
@@ -1968,7 +1968,7 @@ onUnmounted(() => {
   justify-content: center;
   gap: 10px;
   padding: 16px;
-  background: #000;
+  background: var(--black);
   color: #fff;
   border: none;
   font-size: 1rem;
@@ -1979,7 +1979,7 @@ onUnmounted(() => {
 }
 
 .next-step-btn:hover:not(:disabled) {
-  background: #FF6B35;
+  background: var(--orange);
 }
 
 .next-step-btn:disabled {
@@ -1994,7 +1994,7 @@ onUnmounted(() => {
 /* 项目信息面板 */
 .project-panel {
   border-top: 1px solid #E0E0E0;
-  background: #FAFAFA;
+  background: var(--gray-light);
 }
 
 .project-header {
@@ -2006,7 +2006,7 @@ onUnmounted(() => {
 }
 
 .project-icon {
-  color: #FF6B35;
+  color: var(--orange);
 }
 
 .project-title {

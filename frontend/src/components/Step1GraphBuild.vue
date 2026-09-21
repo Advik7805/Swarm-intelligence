@@ -275,7 +275,7 @@ watch(() => props.systemLogs.length, () => {
 <style scoped>
 .workbench-panel {
   height: 100%;
-  background-color: #FAFAFA;
+  background-color: var(--gray-light);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -292,11 +292,11 @@ watch(() => props.systemLogs.length, () => {
 }
 
 .step-card {
-  background: #FFF;
+  background: var(--white);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  border: 1px solid #EAEAEA;
+  border: 1px solid var(--border);
   transition: all 0.3s ease;
   position: relative; /* For absolute overlay */
 }
@@ -328,7 +328,7 @@ watch(() => props.systemLogs.length, () => {
 
 .step-card.active .step-num,
 .step-card.completed .step-num {
-  color: #000;
+  color: var(--black);
 }
 
 .step-title {
@@ -346,9 +346,9 @@ watch(() => props.systemLogs.length, () => {
 }
 
 .badge.success { background: #E8F5E9; color: #2E7D32; }
-.badge.processing { background: #FF5722; color: #FFF; }
-.badge.accent { background: #FF5722; color: #FFF; }
-.badge.pending { background: #F5F5F5; color: #999; }
+.badge.processing { background: #FF5722; color: var(--white); }
+.badge.accent { background: #FF5722; color: var(--white); }
+.badge.pending { background: var(--gray-light); color: #999; }
 
 .api-note {
   font-family: 'JetBrains Mono', monospace;
@@ -390,7 +390,7 @@ watch(() => props.systemLogs.length, () => {
 }
 
 .entity-tag {
-  background: #F5F5F5;
+  background: var(--gray-light);
   border: 1px solid #EEE;
   padding: 4px 10px;
   border-radius: 4px;
@@ -419,7 +419,7 @@ watch(() => props.systemLogs.length, () => {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(4px);
     z-index: 10;
-    border: 1px solid #EAEAEA;
+    border: 1px solid var(--border);
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     border-radius: 6px;
     display: flex;
@@ -435,8 +435,8 @@ watch(() => props.systemLogs.length, () => {
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
-    border-bottom: 1px solid #EAEAEA;
-    background: #FAFAFA;
+    border-bottom: 1px solid var(--border);
+    background: var(--gray-light);
 }
 
 .detail-title-group {
@@ -448,8 +448,8 @@ watch(() => props.systemLogs.length, () => {
 .detail-type-badge {
     font-size: 9px;
     font-weight: 700;
-    color: #FFF;
-    background: #000;
+    color: var(--white);
+    background: var(--black);
     padding: 2px 6px;
     border-radius: 2px;
     text-transform: uppercase;
@@ -486,7 +486,7 @@ watch(() => props.systemLogs.length, () => {
     line-height: 1.5;
     margin-bottom: 16px;
     padding-bottom: 12px;
-    border-bottom: 1px dashed #EAEAEA;
+    border-bottom: 1px dashed var(--border);
 }
 
 .detail-section {
@@ -521,7 +521,7 @@ watch(() => props.systemLogs.length, () => {
 .attr-name {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 600;
-    color: #000;
+    color: var(--black);
 }
 
 .attr-type {
@@ -543,7 +543,7 @@ watch(() => props.systemLogs.length, () => {
 
 .example-tag {
     font-size: 11px;
-    background: #FFF;
+    background: var(--white);
     border: 1px solid #E0E0E0;
     padding: 3px 8px;
     border-radius: 12px;
@@ -556,7 +556,7 @@ watch(() => props.systemLogs.length, () => {
     gap: 8px;
     font-size: 11px;
     padding: 6px;
-    background: #F5F5F5;
+    background: var(--gray-light);
     border-radius: 4px;
     font-family: 'JetBrains Mono', monospace;
 }
@@ -588,7 +588,7 @@ watch(() => props.systemLogs.length, () => {
   display: block;
   font-size: 20px;
   font-weight: 700;
-  color: #000;
+  color: var(--black);
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -603,8 +603,8 @@ watch(() => props.systemLogs.length, () => {
 /* Step 03 Button */
 .action-btn {
   width: 100%;
-  background: #000;
-  color: #FFF;
+  background: var(--black);
+  color: var(--white);
   border: none;
   padding: 14px;
   border-radius: 4px;
@@ -645,7 +645,7 @@ watch(() => props.systemLogs.length, () => {
 
 /* System Logs */
 .system-logs {
-  background: #000;
+  background: var(--black);
   color: #DDD;
   padding: 16px;
   font-family: 'JetBrains Mono', monospace;

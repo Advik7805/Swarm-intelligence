@@ -818,7 +818,7 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #FAFAFA;
+  background-color: var(--gray-light);
   background-image: radial-gradient(#D0D0D0 1.5px, transparent 1.5px);
   background-size: 24px 24px;
   overflow: hidden;
@@ -856,7 +856,7 @@ onUnmounted(() => {
   height: 32px;
   padding: 0 12px;
   border: 1px solid #E0E0E0;
-  background: #FFF;
+  background: var(--white);
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -870,8 +870,8 @@ onUnmounted(() => {
 }
 
 .tool-btn:hover {
-  background: #F5F5F5;
-  color: #000;
+  background: var(--gray-light);
+  color: var(--black);
   border-color: #CCC;
 }
 
@@ -919,7 +919,7 @@ onUnmounted(() => {
   background: rgba(255,255,255,0.95);
   padding: 12px 16px;
   border-radius: 8px;
-  border: 1px solid #EAEAEA;
+  border: 1px solid var(--border);
   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
   z-index: 10;
 }
@@ -968,7 +968,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #FFF;
+  background: var(--white);
   padding: 8px 14px;
   border-radius: 20px;
   border: 1px solid #E0E0E0;
@@ -1033,8 +1033,8 @@ input:checked + .slider:before {
   right: 20px;
   width: 320px;
   max-height: calc(100% - 100px);
-  background: #FFF;
-  border: 1px solid #EAEAEA;
+  background: var(--white);
+  border: 1px solid var(--border);
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
   overflow: hidden;
@@ -1050,7 +1050,7 @@ input:checked + .slider:before {
   justify-content: space-between;
   align-items: center;
   padding: 14px 16px;
-  background: #FAFAFA;
+  background: var(--gray-light);
   border-bottom: 1px solid #EEE;
   flex-shrink: 0;
 }
@@ -1172,7 +1172,7 @@ input:checked + .slider:before {
 .label-tag {
   display: inline-block;
   padding: 4px 12px;
-  background: #F5F5F5;
+  background: var(--gray-light);
   border: 1px solid #E0E0E0;
   border-radius: 16px;
   font-size: 11px;
@@ -1265,7 +1265,7 @@ input:checked + .slider:before {
 .finished-hint .hint-icon {
   width: 18px;
   height: 18px;
-  color: #FFF;
+  color: var(--white);
 }
 
 .finished-hint .hint-text {
@@ -1283,7 +1283,7 @@ input:checked + .slider:before {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  color: #FFF;
+  color: var(--white);
   transition: all 0.2s;
   margin-left: 8px;
   flex-shrink: 0;
@@ -1330,8 +1330,8 @@ input:checked + .slider:before {
 }
 
 .self-loop-item {
-  background: #FAFAFA;
-  border: 1px solid #EAEAEA;
+  background: var(--gray-light);
+  border: 1px solid var(--border);
   border-radius: 8px;
 }
 
@@ -1340,13 +1340,13 @@ input:checked + .slider:before {
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  background: #F5F5F5;
+  background: var(--gray-light);
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .self-loop-item-header:hover {
-  background: #EEEEEE;
+  background: var(--border);
 }
 
 .self-loop-item.expanded .self-loop-item-header {
@@ -1390,7 +1390,7 @@ input:checked + .slider:before {
 
 .self-loop-item-content {
   padding: 12px;
-  border-top: 1px solid #EAEAEA;
+  border-top: 1px solid var(--border);
 }
 
 .self-loop-item-content .detail-row {

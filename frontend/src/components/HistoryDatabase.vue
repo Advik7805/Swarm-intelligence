@@ -647,14 +647,14 @@ onUnmounted(() => {
 .section-line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #E5E7EB, transparent);
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
   max-width: 300px;
 }
 
 .section-title {
   font-size: 0.8rem;
   font-weight: 500;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
   letter-spacing: 3px;
   text-transform: uppercase;
 }
@@ -674,8 +674,8 @@ onUnmounted(() => {
 .project-card {
   position: absolute;
   width: 280px;
-  background: #FFFFFF;
-  border: 1px solid #E5E7EB;
+  background: var(--white);
+  border: 1px solid var(--border);
   border-radius: 0;
   padding: 14px;
   cursor: pointer;
@@ -700,7 +700,7 @@ onUnmounted(() => {
   align-items: center;
   margin-bottom: 12px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #F3F4F6;
+  border-bottom: 1px solid var(--gray-light);
   font-family: 'JetBrains Mono', 'SF Mono', monospace;
   font-size: 0.7rem;
 }
@@ -731,10 +731,10 @@ onUnmounted(() => {
 /* 不同功能的颜色 */
 .status-icon:nth-child(1).available { color: #3B82F6; } /* 图谱构建 - 蓝色 */
 .status-icon:nth-child(2).available { color: #F59E0B; } /* 环境搭建 - 橙色 */
-.status-icon:nth-child(3).available { color: #10B981; } /* 分析报告 - 绿色 */
+.status-icon:nth-child(3).available { color: var(--wf-done-dot); } /* 分析报告 - 绿色 */
 
 .status-icon.unavailable {
-  color: #D1D5DB;
+  color: var(--wf-muted-dot);
   opacity: 0.5;
 }
 
@@ -753,10 +753,10 @@ onUnmounted(() => {
 }
 
 /* 进度状态颜色 */
-.card-progress.completed { color: #10B981; }    /* 已完成 - 绿色 */
+.card-progress.completed { color: var(--wf-done-dot); }    /* 已完成 - 绿色 */
 .card-progress.in-progress { color: #F59E0B; }  /* 进行中 - 橙色 */
-.card-progress.not-started { color: #9CA3AF; }  /* 未开始 - 灰色 */
-.card-status.pending { color: #9CA3AF; }
+.card-progress.not-started { color: var(--wf-todo-text); }  /* 未开始 - 灰色 */
+.card-status.pending { color: var(--wf-todo-text); }
 
 /* 文件列表区域 */
 .card-files-wrapper {
@@ -805,7 +805,7 @@ onUnmounted(() => {
 .file-item:hover {
   background: rgba(255, 255, 255, 1);
   transform: translateX(2px);
-  border-color: #e5e7eb;
+  border-color: var(--border);
 }
 
 /* 简约文件标签样式 */
@@ -835,7 +835,7 @@ onUnmounted(() => {
 .file-tag.code { background: #eae6f2; color: #815aa6; }
 .file-tag.img { background: #e6f2f2; color: #5aa6a6; }
 .file-tag.zip { background: #f2f0e6; color: #a69b5a; }
-.file-tag.other { background: #f3f4f6; color: #6b7280; }
+.file-tag.other { background: var(--gray-light); color: #6b7280; }
 
 .file-name {
   font-family: 'Inter', sans-serif;
@@ -854,7 +854,7 @@ onUnmounted(() => {
   justify-content: center;
   gap: 8px;
   height: 48px;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
 }
 
 .empty-file-icon {
@@ -870,8 +870,8 @@ onUnmounted(() => {
 
 /* 悬停时文件区域效果 */
 .project-card:hover .card-files-wrapper {
-  border-color: #d1d5db;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-color: var(--wf-muted-dot);
+  background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
 }
 
 /* 角落装饰 */
@@ -926,10 +926,10 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding-top: 12px;
-  border-top: 1px solid #F3F4F6;
+  border-top: 1px solid var(--gray-light);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.65rem;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
   font-weight: 500;
 }
 
@@ -955,9 +955,9 @@ onUnmounted(() => {
 }
 
 /* 进度状态颜色 - 底部 */
-.card-footer .card-progress.completed { color: #10B981; }
+.card-footer .card-progress.completed { color: var(--wf-done-dot); }
 .card-footer .card-progress.in-progress { color: #F59E0B; }
-.card-footer .card-progress.not-started { color: #9CA3AF; }
+.card-footer .card-progress.not-started { color: var(--wf-todo-text); }
 
 /* 底部装饰线 */
 .card-bottom-line {
@@ -966,7 +966,7 @@ onUnmounted(() => {
   left: 0;
   height: 2px;
   width: 0;
-  background-color: #000;
+  background-color: var(--black);
   transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   z-index: 20;
 }
@@ -982,7 +982,7 @@ onUnmounted(() => {
   align-items: center;
   gap: 14px;
   padding: 48px;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
 }
 
 .empty-icon {
@@ -993,7 +993,7 @@ onUnmounted(() => {
 .loading-spinner {
   width: 24px;
   height: 24px;
-  border: 2px solid #E5E7EB;
+  border: 2px solid var(--border);
   border-top-color: #6B7280;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -1035,12 +1035,12 @@ onUnmounted(() => {
 }
 
 .modal-content {
-  background: #FFFFFF;
+  background: var(--white);
   width: 560px;
   max-width: 90vw;
   max-height: 85vh;
   overflow-y: auto;
-  border: 1px solid #E5E7EB;
+  border: 1px solid var(--border);
   border-radius: 8px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
@@ -1080,8 +1080,8 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 20px 32px;
-  border-bottom: 1px solid #F3F4F6;
-  background: #FFFFFF;
+  border-bottom: 1px solid var(--gray-light);
+  background: var(--white);
 }
 
 .modal-title-section {
@@ -1107,17 +1107,17 @@ onUnmounted(() => {
   font-weight: 600;
   padding: 4px 8px;
   border-radius: 4px;
-  background: #F9FAFB;
+  background: var(--gray-light);
 }
 
-.modal-progress.completed { color: #10B981; background: rgba(16, 185, 129, 0.1); }
+.modal-progress.completed { color: var(--wf-done-dot); background: rgba(16, 185, 129, 0.1); }
 .modal-progress.in-progress { color: #F59E0B; background: rgba(245, 158, 11, 0.1); }
-.modal-progress.not-started { color: #9CA3AF; background: #F3F4F6; }
+.modal-progress.not-started { color: var(--wf-todo-text); background: var(--gray-light); }
 
 .modal-create-time {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
   letter-spacing: 0.3px;
 }
 
@@ -1127,7 +1127,7 @@ onUnmounted(() => {
   border: none;
   background: transparent;
   font-size: 1.5rem;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1137,7 +1137,7 @@ onUnmounted(() => {
 }
 
 .modal-close:hover {
-  background: #F3F4F6;
+  background: var(--gray-light);
   color: #111827;
 }
 
@@ -1169,8 +1169,8 @@ onUnmounted(() => {
   color: #374151;
   line-height: 1.6;
   padding: 16px;
-  background: #F9FAFB;
-  border: 1px solid #F3F4F6;
+  background: var(--gray-light);
+  border: 1px solid var(--gray-light);
   border-radius: 8px;
 }
 
@@ -1189,17 +1189,17 @@ onUnmounted(() => {
 }
 
 .modal-files::-webkit-scrollbar-track {
-  background: #F3F4F6;
+  background: var(--gray-light);
   border-radius: 2px;
 }
 
 .modal-files::-webkit-scrollbar-thumb {
-  background: #D1D5DB;
+  background: var(--wf-muted-dot);
   border-radius: 2px;
 }
 
 .modal-files::-webkit-scrollbar-thumb:hover {
-  background: #9CA3AF;
+  background: var(--wf-todo-text);
 }
 
 .modal-file-item {
@@ -1207,14 +1207,14 @@ onUnmounted(() => {
   align-items: center;
   gap: 12px;
   padding: 10px 14px;
-  background: #FFFFFF;
-  border: 1px solid #E5E7EB;
+  background: var(--white);
+  border: 1px solid var(--border);
   border-radius: 6px;
   transition: all 0.2s ease;
 }
 
 .modal-file-item:hover {
-  border-color: #D1D5DB;
+  border-color: var(--wf-muted-dot);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -1229,10 +1229,10 @@ onUnmounted(() => {
 
 .modal-empty {
   font-size: 0.85rem;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
   padding: 16px;
-  background: #F9FAFB;
-  border: 1px dashed #E5E7EB;
+  background: var(--gray-light);
+  border: 1px dashed var(--border);
   border-radius: 6px;
   text-align: center;
 }
@@ -1243,19 +1243,19 @@ onUnmounted(() => {
   align-items: center;
   gap: 16px;
   padding: 10px 32px 0;
-  background: #FFFFFF;
+  background: var(--white);
 }
 
 .divider-line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #E5E7EB, transparent);
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
 
 .divider-text {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
   letter-spacing: 2px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1266,7 +1266,7 @@ onUnmounted(() => {
   display: flex;
   gap: 16px;
   padding: 20px 32px;
-  background: #FFFFFF;
+  background: var(--white);
 }
 
 .modal-btn {
@@ -1276,9 +1276,9 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   padding: 16px;
-  border: 1px solid #E5E7EB;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: #FFFFFF;
+  background: var(--white);
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
@@ -1294,14 +1294,14 @@ onUnmounted(() => {
 .modal-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background: #F9FAFB;
+  background: var(--gray-light);
 }
 
 .btn-step {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
   font-weight: 500;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -1322,7 +1322,7 @@ onUnmounted(() => {
 
 .modal-btn.btn-project .btn-icon { color: #3B82F6; }
 .modal-btn.btn-simulation .btn-icon { color: #F59E0B; }
-.modal-btn.btn-report .btn-icon { color: #10B981; }
+.modal-btn.btn-report .btn-icon { color: var(--wf-done-dot); }
 
 .modal-btn:hover:not(:disabled) .btn-text {
   color: #111827;
@@ -1334,13 +1334,13 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   padding: 0 32px 20px;
-  background: #FFFFFF;
+  background: var(--white);
 }
 
 .hint-text {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  color: #9CA3AF;
+  color: var(--wf-todo-text);
   letter-spacing: 0.3px;
   text-align: center;
   line-height: 1.5;

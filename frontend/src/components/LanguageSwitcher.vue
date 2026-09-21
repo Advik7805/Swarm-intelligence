@@ -94,7 +94,7 @@ onUnmounted(() => {
   top: 100%;
   right: 0;
   margin-top: 4px;
-  background: #FFFFFF;
+  background: var(--white);
   border: 1px solid #DDD;
   list-style: none;
   padding: 4px 0;
@@ -117,7 +117,7 @@ onUnmounted(() => {
 }
 
 .switcher-option.active {
-  color: var(--orange, #FF4500);
+  color: var(--orange, var(--orange));
 }
 
 

@@ -3,7 +3,7 @@
     <!-- Header -->
     <header class="app-header">
       <div class="header-left">
-        <div class="brand" @click="router.push('/')">MIROFISH</div>
+        <div class="brand" @click="router.push('/')">HIVEMIND</div>
       </div>
       
       <div class="header-center">
@@ -223,7 +223,7 @@ onMounted(() => {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #FFF;
+  background: var(--white);
   overflow: hidden;
   font-family: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
 }
@@ -231,12 +231,12 @@ onMounted(() => {
 /* Header */
 .app-header {
   height: 60px;
-  border-bottom: 1px solid #EAEAEA;
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  background: #FFF;
+  background: var(--white);
   z-index: 100;
   position: relative;
 }
@@ -257,7 +257,7 @@ onMounted(() => {
 
 .view-switcher {
   display: flex;
-  background: #F5F5F5;
+  background: var(--gray-light);
   padding: 4px;
   border-radius: 6px;
   gap: 4px;
@@ -276,8 +276,8 @@ onMounted(() => {
 }
 
 .switch-btn.active {
-  background: #FFF;
-  color: #000;
+  background: var(--white);
+  color: var(--black);
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
@@ -302,7 +302,7 @@ onMounted(() => {
 
 .step-name {
   font-weight: 700;
-  color: #000;
+  color: var(--black);
 }
 
 .step-divider {
@@ -350,6 +350,6 @@ onMounted(() => {
 }
 
 .panel-wrapper.left {
-  border-right: 1px solid #EAEAEA;
+  border-right: 1px solid var(--border);
 }
 </style>

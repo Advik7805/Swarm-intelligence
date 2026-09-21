@@ -2,10 +2,14 @@
   <div class="home-container">
     <!-- 顶部导航栏 -->
     <nav class="navbar">
-      <div class="nav-brand">MIROFISH</div>
+      <div class="nav-brand">
+        <img src="../assets/logo/hivemind_logo_left.png" alt="HiveMind" class="nav-logo" />
+      </div>
       <div class="nav-links">
+        <router-link to="/analytics" class="analytics-link">{{ $t('nav.analytics') }}</router-link>
         <LanguageSwitcher />
-        <a href="https://github.com/666ghj/HiveMind" target="_blank" class="github-link">
+        <ThemeToggle />
+        <a href="https://github.com/Advik7805/Swarm-intelligence" target="_blank" class="github-link">
           {{ $t('nav.visitGithub') }} <span class="arrow">↗</span>
         </a>
       </div>
@@ -14,6 +18,7 @@
     <div class="main-content">
       <!-- 上半部分：Hero 区域 -->
       <section class="hero-section">
+        <SwarmCanvas />
         <div class="hero-left">
           <div class="tag-row">
             <span class="orange-tag">{{ $t('home.tagline') }}</span>
@@ -312,22 +317,8 @@ const startSimulation = () => {
 </script>
 
 <style scoped>
-/* 全局变量与重置 */
-:root {
-  --black: #000000;
-  --white: #FFFFFF;
-  --orange: #FF4500;
-  --gray-light: #F5F5F5;
-  --gray-text: #666666;
-  --border: #E5E5E5;
-  /* 
-    使用 Space Grotesk 作为主要标题字体，JetBrains Mono 作为代码/标签字体
-    确保已在 index.html 引入这些 Google Fonts 
-  */
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-sans: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
-  --font-cn: 'Noto Sans SC', system-ui, sans-serif;
-}
+/* Design tokens live in src/assets/theme.css (HiveMind design system).
+   This view consumes the legacy aliases for backward compatibility. */
 
 .home-container {
   min-height: 100vh;
@@ -393,6 +384,14 @@ const startSimulation = () => {
   justify-content: space-between;
   margin-bottom: 80px;
   position: relative;
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+}
+
+.hero-left,
+.hero-right {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-left {
@@ -411,7 +410,7 @@ const startSimulation = () => {
 
 .orange-tag {
   background: var(--orange);
-  color: var(--white);
+  color: var(--hm-on-accent);
   padding: 4px 10px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -434,7 +433,7 @@ const startSimulation = () => {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #000000 0%, #444444 100%);
+  background: linear-gradient(90deg, var(--hm-accent-dim) 0%, var(--hm-accent-bright) 60%, var(--hm-accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -860,18 +859,18 @@ const startSimulation = () => {
 }
 
 .start-engine-btn:disabled {
-  background: #E5E5E5;
+  background: var(--border);
   color: #999;
   cursor: not-allowed;
   transform: none;
-  border: 1px solid #E5E5E5;
+  border: 1px solid var(--border);
 }
 
 /* 引导动画：微妙的边框脉冲 */
 @keyframes pulse-border {
-  0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); }
-  70% { box-shadow: 0 0 0 6px rgba(0, 0, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+  0% { box-shadow: 0 0 0 0 var(--hm-glow); }
+  70% { box-shadow: 0 0 0 6px rgba(240, 165, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(240, 165, 0, 0); }
 }
 
 /* 响应式适配 */

@@ -1,0 +1,175 @@
+/* ============================================================
+   HiveMind Design System — "Obsidian & Amber"
+   Dual-theme (dark default / light) token layer.
+
+   The upstream codebase styles everything through a small set of
+   legacy variables (--black/--white/--orange/--border/...). We keep
+   those names as semantic ALIASES (they no longer mean literal
+   black/white) so the entire existing UI re-themes instantly, and we
+   add new --hm-* tokens for all HiveMind-original components.
+   ============================================================ */
+
+/* ---------- DARK (default) — obsidian & amber ---------- */
+:root,
+html:root {
+  /* surfaces */
+  --hm-bg: #0D1117;
+  --hm-bg-soft: #11161D;
+  --hm-surface: #161C24;
+  --hm-surface-2: #1C242E;
+  --hm-border: #2A323D;
+  --hm-border-soft: #212933;
+
+  /* text */
+  --hm-text: #E6EDF3;
+  --hm-text-muted: #9AA7B4;
+  --hm-text-faint: #647080;
+  --hm-on-accent: #131722;
+
+  /* brand */
+  --hm-accent: #F0A500;
+  --hm-accent-bright: #FFC933;
+  --hm-accent-dim: #B57F00;
+  --hm-accent-soft: rgba(240, 165, 0, 0.12);
+  --hm-glow: rgba(240, 165, 0, 0.35);
+
+  /* status */
+  --hm-pos: #3FB68B;
+  --hm-neg: #E5534B;
+  --hm-neutral: #8B949E;
+  --hm-info: #58A6FF;
+
+  /* emotion palette (d3 charts) */
+  --em-joy: #F7C948; --em-trust: #3FB68B; --em-fear: #7B61FF;
+  --em-surprise: #FF8FA3; --em-sadness: #58A6FF; --em-disgust: #8B949E;
+  --em-anger: #E5534B; --em-anticipation: #FFA657; --em-neutral: #647080;
+
+  /* charts */
+  --hm-grid: rgba(230, 237, 243, 0.07);
+  --hm-tooltip-bg: #1C242E;
+
+  /* ---- legacy aliases (existing MiroFish-derived components) ---- */
+  --black: var(--hm-bg);
+  --white: var(--hm-text);
+  --orange: var(--hm-accent);
+  --gray-light: var(--hm-surface);
+  --gray-text: var(--hm-text-muted);
+  --border: var(--hm-border);
+
+  --wf-active-bg: var(--hm-surface-2);
+  --wf-active-border: var(--hm-accent-dim);
+  --wf-active-dot: var(--hm-accent);
+  --wf-active-text: var(--hm-text);
+  --wf-border: var(--hm-border);
+  --wf-divider: var(--hm-border-soft);
+  --wf-done-bg: var(--hm-surface);
+  --wf-done-border: var(--hm-border);
+  --wf-done-dot: var(--hm-pos);
+  --wf-muted-dot: #3A4450;
+  --wf-todo-text: var(--hm-text-faint);
+
+  /* typography (theme-independent) */
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
+  --font-cn: 'Noto Sans SC', system-ui, sans-serif;
+
+  color-scheme: dark;
+}
+
+/* ---------- LIGHT — paper & amber ---------- */
+html:root[data-theme="light"] {
+  --hm-bg: #FAF7F0;
+  --hm-bg-soft: #F4EFE4;
+  --hm-surface: #FFFFFF;
+  --hm-surface-2: #F4EFE4;
+  --hm-border: #E2DAC8;
+  --hm-border-soft: #EAE4D6;
+
+  --hm-text: #1A2230;
+  --hm-text-muted: #5B6673;
+  --hm-text-faint: #8B94A0;
+  --hm-on-accent: #FFFFFF;
+
+  --hm-accent: #D99000;
+  --hm-accent-bright: #B57F00;
+  --hm-accent-dim: #A87600;
+  --hm-accent-soft: rgba(217, 144, 0, 0.10);
+  --hm-glow: rgba(217, 144, 0, 0.25);
+
+  --hm-pos: #1A7F5A;
+  --hm-neg: #C93A32;
+  --hm-neutral: #6B7683;
+  --hm-info: #2E6FBE;
+
+  --em-joy: #D9A400; --em-trust: #1A7F5A; --em-fear: #6C4CF1;
+  --em-surprise: #D4587A; --em-sadness: #2E6FBE; --em-disgust: #6B7683;
+  --em-anger: #C93A32; --em-anticipation: #D97A1F; --em-neutral: #8B94A0;
+
+  --hm-grid: rgba(26, 34, 48, 0.08);
+  --hm-tooltip-bg: #FFFFFF;
+
+  --black: var(--hm-text);
+  --white: var(--hm-surface);
+  --orange: var(--hm-accent);
+  --gray-light: var(--hm-bg-soft);
+  --gray-text: var(--hm-text-muted);
+  --border: var(--hm-border);
+
+  --wf-active-bg: #FFF9EA;
+  --wf-active-border: var(--hm-accent);
+  --wf-active-dot: var(--hm-accent);
+  --wf-active-text: var(--hm-text);
+  --wf-border: var(--hm-border);
+  --wf-divider: var(--hm-border-soft);
+  --wf-done-bg: var(--hm-bg-soft);
+  --wf-done-border: var(--hm-border);
+  --wf-done-dot: var(--hm-pos);
+  --wf-muted-dot: #D8D1C0;
+  --wf-todo-text: var(--hm-text-faint);
+
+  color-scheme: light;
+}
+
+/* ---------- global theme plumbing ---------- */
+html { background: var(--hm-bg); }
+body {
+  background: var(--hm-bg);
+  color: var(--hm-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--hm-bg-soft); }
+::-webkit-scrollbar-thumb { background: var(--hm-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--hm-accent-dim); }
+
+::selection { background: var(--hm-accent); color: var(--hm-on-accent); }
+
+/* shared HiveMind primitives */
+.hm-card {
+  background: var(--hm-surface);
+  border: 1px solid var(--hm-border);
+  border-radius: 12px;
+}
+.hm-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: 999px;
+  font-size: 0.72rem; letter-spacing: 0.4px;
+  background: var(--hm-accent-soft); color: var(--hm-accent-bright);
+  border: 1px solid var(--hm-accent-dim);
+}
+html[data-theme="light"] .hm-chip { color: #8A6200; }
+.hm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--hm-accent); color: var(--hm-on-accent);
+  border: none; border-radius: 10px; padding: 10px 20px;
+  font-weight: 700; cursor: pointer; letter-spacing: 0.3px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.hm-btn:hover:not(:disabled) { filter: brightness(1.06); box-shadow: 0 0 18px var(--hm-glow); transform: translateY(-1px); }
+.hm-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.hm-btn-ghost {
+  background: transparent; color: var(--hm-text);
+  border: 1px solid var(--hm-border);
+}
+.hm-btn-ghost:hover:not(:disabled) { border-color: var(--hm-accent-dim); box-shadow: none; }

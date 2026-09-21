@@ -24,15 +24,18 @@ from app.config import Config
 
 def main():
     """主函数"""
-    # 验证配置
+    # 验证配置（HiveMind: keys are optional — analytics & demo mode run
+    # without them; only graph building/simulation/report need real keys）
     errors = Config.validate()
     if errors:
-        print("配置错误:")
+        print("=" * 60)
+        print("HiveMind: starting in LIMITED MODE (missing configuration):")
         for err in errors:
             print(f"  - {err}")
-        print("\n请检查 .env 文件中的配置")
-        sys.exit(1)
-    
+        print("Analytics & demo mode are available.")
+        print("Graph build / simulation / report need these keys in .env")
+        print("=" * 60)
+
     # 创建应用
     app = create_app()
     

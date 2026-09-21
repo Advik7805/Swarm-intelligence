@@ -30,7 +30,8 @@
     "description": "HiveMind — 多智能体社会模拟预测平台"
   },
   "nav": {
-    "visitGithub": "访问我们的Github主页"
+    "visitGithub": "访问我们的Github主页",
+    "analytics": "舆论分析"
   },
   "home": {
     "tagline": "简洁通用的群体智能引擎",
@@ -669,5 +670,73 @@
     "llmSelectAgentFailed": "LLM选择Agent失败，使用默认选择: {error}",
     "generateInterviewQuestionsFailed": "生成采访问题失败: {error}",
     "generateInterviewSummaryFailed": "生成采访摘要失败: {error}"
+  },
+  "theme": {
+    "toLight": "切换到浅色主题",
+    "toDark": "切换到深色主题"
+  },
+  "analytics": {
+    "selectRun": "选择一次模拟…",
+    "runMeta": "{posts} 条帖子 · {agents} 个智能体",
+    "tryDemo": "⚡ 观看演示",
+    "loading": "正在分析群体舆论…",
+    "loadError": "该模拟暂无分析数据（后端是否在线？）。",
+    "demoError": "演示数据生成失败——后端是否可达？",
+    "demoBadge": "演示模式 — 合成群体",
+    "liveBadge": "真实模拟",
+    "untitledRun": "未命名模拟",
+    "agents": "智能体",
+    "rounds": "轮次",
+    "posts": "帖子",
+    "positive": "正面",
+    "negative": "负面",
+    "neutral": "中性",
+    "confidenceTitle": "预测置信度",
+    "confidenceSub": "基于收敛统计的可信度评分",
+    "band": {
+      "high": "高置信度",
+      "medium": "中等置信度",
+      "low": "低置信度"
+    },
+    "factors": {
+      "stabilisation": "舆论稳定度",
+      "consensus": "共识形成度",
+      "cascade": "传播级联能量",
+      "sufficiency": "数据充分性"
+    },
+    "sentimentTitle": "舆论时间线",
+    "sentimentSub": "每轮平均情感值（HIVE-Sent 引擎）",
+    "emotionTitle": "情绪构成",
+    "emotionSub": "帖子中8种基本情绪的分布",
+    "emotions": {
+      "joy": "喜悦",
+      "trust": "信任",
+      "fear": "恐惧",
+      "surprise": "惊讶",
+      "sadness": "悲伤",
+      "disgust": "厌恶",
+      "anger": "愤怒",
+      "anticipation": "期待",
+      "neutral": "中性"
+    },
+    "networkTitle": "智能体交互网络",
+    "networkSub": "社区发现（Louvain）— 节点大小 = 影响力",
+    "echoIndex": "回音室指数",
+    "nodes": "节点",
+    "edges": "边",
+    "modularity": "模块度",
+    "reciprocity": "互惠性",
+    "communities": "社区数",
+    "community": "社区",
+    "noNetwork": "该模拟暂无网络数据",
+    "influencersTitle": "影响力排行榜",
+    "influencersSub": "PageRank + 中心性综合排名",
+    "personasTitle": "自动发现的人格原型",
+    "personasSub": "基于行为与内容的聚类 archetype（TF-IDF + KMeans）",
+    "agentCount": "{n} 个智能体",
+    "sigPosting": "发帖驱动",
+    "sigAmplify": "放大传播",
+    "sigSentiment": "平均情感",
+    "footer": "HiveMind Analytics — 舆论动力学 · 社会网络分析 · 预测置信度。AGPL-3.0。"
   }
 }

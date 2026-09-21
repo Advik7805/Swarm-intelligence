@@ -30,7 +30,8 @@
     "description": "HiveMind — Multi-Agent Social Simulation & Prediction Platform"
   },
   "nav": {
-    "visitGithub": "Visit our Github page"
+    "visitGithub": "Visit our Github page",
+    "analytics": "Opinion Analytics"
   },
   "home": {
     "tagline": "Concise & Universal Swarm Intelligence Engine",
@@ -669,5 +670,73 @@
     "llmSelectAgentFailed": "LLM agent selection failed, using default selection: {error}",
     "generateInterviewQuestionsFailed": "Failed to generate interview questions: {error}",
     "generateInterviewSummaryFailed": "Failed to generate interview summary: {error}"
+  },
+  "theme": {
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme"
+  },
+  "analytics": {
+    "selectRun": "Select a run…",
+    "runMeta": "{posts} posts · {agents} agents",
+    "tryDemo": "⚡ Try Live Demo",
+    "loading": "Crunching the swarm's opinions…",
+    "loadError": "Analytics not available for this run (is the backend up?).",
+    "demoError": "Could not generate demo data — is the backend reachable?",
+    "demoBadge": "DEMO MODE — synthetic swarm",
+    "liveBadge": "LIVE SIMULATION",
+    "untitledRun": "Untitled simulation",
+    "agents": "Agents",
+    "rounds": "Rounds",
+    "posts": "Posts",
+    "positive": "Positive",
+    "negative": "Negative",
+    "neutral": "Neutral",
+    "confidenceTitle": "Prediction Confidence",
+    "confidenceSub": "How much to trust this prediction — computed from convergence statistics",
+    "band": {
+      "high": "High confidence",
+      "medium": "Medium confidence",
+      "low": "Low confidence"
+    },
+    "factors": {
+      "stabilisation": "Opinion stabilisation",
+      "consensus": "Consensus formation",
+      "cascade": "Cascade energy",
+      "sufficiency": "Data sufficiency"
+    },
+    "sentimentTitle": "Opinion Timeline",
+    "sentimentSub": "Mean sentiment per simulation round (HIVE-Sent engine)",
+    "emotionTitle": "Emotion Mix",
+    "emotionSub": "Distribution of 8 primary emotions across posts",
+    "emotions": {
+      "joy": "Joy",
+      "trust": "Trust",
+      "fear": "Fear",
+      "surprise": "Surprise",
+      "sadness": "Sadness",
+      "disgust": "Disgust",
+      "anger": "Anger",
+      "anticipation": "Anticipation",
+      "neutral": "Neutral"
+    },
+    "networkTitle": "Agent Interaction Network",
+    "networkSub": "Communities (Louvain) — node size = influence",
+    "echoIndex": "Echo-chamber index",
+    "nodes": "Nodes",
+    "edges": "Edges",
+    "modularity": "Modularity",
+    "reciprocity": "Reciprocity",
+    "communities": "Communities",
+    "community": "Community",
+    "noNetwork": "No network data for this run",
+    "influencersTitle": "Influence Leaderboard",
+    "influencersSub": "PageRank + centrality composite ranking",
+    "personasTitle": "Discovered Personas",
+    "personasSub": "Behavioural archetypes auto-clustered from actions & content (TF-IDF + KMeans)",
+    "agentCount": "{n} agents",
+    "sigPosting": "Posting drive",
+    "sigAmplify": "Amplification",
+    "sigSentiment": "Avg sentiment",
+    "footer": "HiveMind Analytics — opinion dynamics, social network analysis & prediction confidence. AGPL-3.0."
   }
 }

@@ -13,7 +13,9 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    open: true,
+    open: false,
+    // Accept all hosts (required for sandboxed/cloud preview deployments)
+    allowedHosts: true,
     proxy: {
       '/api': {
         target: 'http://localhost:5001',
