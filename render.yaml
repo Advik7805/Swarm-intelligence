@@ -1,0 +1,27 @@
+# ============================================================
+# HiveMind — Render Blueprint (backend API)
+# Deploy: push this repo to GitHub → render.com → New → Blueprint
+# ============================================================
+services:
+  - type: web
+    name: hivemind-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    # Single worker: simulation state is in-memory; scale threads instead
+    startCommand: gunicorn run:app --workers 1 --threads 8 --bind 0.0.0.0:$PORT --timeout 300
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: FLASK_DEBUG
+        value: "false"
+      # ---- Add these two in the Render dashboard (do NOT commit keys) ----
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_BASE_URL
+        value: "https://generativelanguage.googleapis.com/v1beta/openai/"
+      - key: LLM_MODEL_NAME
+        value: "gemini-2.0-flash"
+      - key: ZEP_API_KEY
+        sync: false
