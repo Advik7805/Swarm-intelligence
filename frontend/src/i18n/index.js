@@ -14,7 +14,10 @@ for (const path in localeFiles) {
   }
 }
 
-const savedLocale = localStorage.getItem('locale') || 'zh'
+// Locale persistence: dedicated HiveMind key (v2) so stale language
+// preferences from earlier builds are ignored. Default: English.
+const LOCALE_KEY = 'hivemind-locale'
+const savedLocale = localStorage.getItem(LOCALE_KEY) || 'en'
 
 const i18n = createI18n({
   legacy: false,
@@ -22,6 +25,9 @@ const i18n = createI18n({
   fallbackLocale: 'en',
   messages
 })
+
+// keep the key exported for the switcher
+export const LOCALE_STORAGE_KEY = LOCALE_KEY
 
 export { availableLocales }
 export default i18n

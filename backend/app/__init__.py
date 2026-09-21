@@ -80,6 +80,40 @@ def create_app(config_class=Config):
     @app.route('/health')
     def health():
         return {'status': 'ok', 'service': 'HiveMind Backend'}
+
+    # Friendly root page — visiting the API root in a browser shows a
+    # small status card instead of a confusing "Not Found" error.
+    @app.route('/')
+    def index():
+        return f"""<!doctype html>
+<html><head><meta charset="utf-8"><title>HiveMind API</title>
+<style>
+  body {{ background:#0D1117; color:#E6EDF3; font-family:ui-monospace,monospace;
+         display:flex; align-items:center; justify-content:center; min-height:96vh; margin:0; }}
+  .card {{ border:1px solid #2A323D; border-radius:14px; padding:34px 44px; max-width:560px;
+           background:#161C24; }}
+  h1 {{ color:#F0A500; font-size:1.25rem; margin:0 0 6px; letter-spacing:1px; }}
+  p  {{ color:#9AA7B4; font-size:.85rem; line-height:1.7; margin:6px 0; }}
+  code {{ color:#FFC933; }}
+  .ok {{ color:#3FB68B; }}
+</style></head>
+<body><div class="card">
+  <h1>🐝 HiveMind API</h1>
+  <p class="ok">● status: ok — backend is running</p>
+  <p>This is the <b>API service</b>. The website itself is served by the
+     frontend (port <code>3000</code> locally, or your Vercel URL in production).</p>
+  <p>Health: <code>/health</code><br>
+     Analytics demo: <code>POST /api/analytics/demo</code></p>
+</div></body></html>"""
+
+    # JSON 404 for unknown API routes (frontends expect JSON, not HTML)
+    @app.errorhandler(404)
+    def not_found(e):
+        from flask import request, jsonify
+        if request.path.startswith('/api/'):
+            return jsonify({'success': False, 'error': f'Unknown API route: {request.path}'}), 404
+        return e
+
     
     if should_log_startup:
         logger.info("HiveMind Backend 启动完成")

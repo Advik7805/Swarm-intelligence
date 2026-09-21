@@ -65,11 +65,11 @@ class Config:
         """验证必要配置"""
         errors: list[str] = []
         if not cls.LLM_API_KEY:
-            errors.append("LLM_API_KEY 未配置")
+            errors.append("LLM_API_KEY is not set (graph build / simulation / report disabled)")
         if not cls.ZEP_API_KEY:
-            errors.append("ZEP_API_KEY 未配置")
+            errors.append("ZEP_API_KEY is not set (graph build / simulation / report disabled)")
         if os.environ.get("ZEP_API_URL"):
-            errors.append("ZEP_API_URL 不受支持；HiveMind 仅连接 Zep Cloud")
+            errors.append("ZEP_API_URL is not supported; HiveMind connects to Zep Cloud only")
         if cls.DEBUG:
             import warnings
             warnings.warn("Flask DEBUG mode is enabled. Do not use in production.", RuntimeWarning)
