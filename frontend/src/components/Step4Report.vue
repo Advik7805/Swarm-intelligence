@@ -2374,7 +2374,7 @@ watch(() => props.reportId, (newId) => {
 
 .report-tag {
   background: #000000;
-  color: var(--white);
+  color: var(--hm-text);
   font-size: 11px;
   font-weight: 700;
   padding: 4px 8px;
@@ -2828,7 +2828,7 @@ watch(() => props.reportId, (newId) => {
   height: 10px;
   border-radius: 50%;
   background: var(--wf-muted-dot);
-  border: 2px solid var(--white);
+  border: 2px solid var(--hm-border);
   z-index: 1;
 }
 
@@ -2952,7 +2952,7 @@ watch(() => props.reportId, (newId) => {
   height: 12px;
   border-radius: 50%;
   background: var(--wf-muted-dot);
-  border: 2px solid var(--white);
+  border: 2px solid var(--hm-border);
   z-index: 1;
 }
 
@@ -3412,7 +3412,7 @@ watch(() => props.reportId, (newId) => {
   padding: 14px 20px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--white);
+  color: var(--hm-text);
   background: var(--wf-active-text);
   border: none;
   border-radius: 8px;
@@ -3681,7 +3681,7 @@ watch(() => props.reportId, (newId) => {
 :deep(.rel-edge) {
   font-size: 10px;
   font-weight: 600;
-  color: var(--white);
+  color: var(--hm-text);
   background: #4F46E5;
   padding: 3px 10px;
   border-radius: 10px;
@@ -3836,7 +3836,7 @@ watch(() => props.reportId, (newId) => {
 
 :deep(.interview-display .agent-tab.active .tab-avatar) {
   background: #6366F1;
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 :deep(.interview-display .tab-name) {
@@ -3971,7 +3971,7 @@ watch(() => props.reportId, (newId) => {
 
 :deep(.interview-display .a-badge) {
   background: #4F46E5;
-  color: var(--white);
+  color: var(--hm-text);
   border: 1px solid #4F46E5;
 }
 
@@ -4554,7 +4554,7 @@ watch(() => props.reportId, (newId) => {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 :deep(.insight-display .subquery-text) {
@@ -4779,7 +4779,7 @@ watch(() => props.reportId, (newId) => {
 
 :deep(.panorama-display .fact-item.historical .fact-number) {
   background: var(--wf-todo-text);
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 :deep(.panorama-display .fact-content) {

@@ -966,7 +966,7 @@ onUnmounted(() => {
   left: 0;
   height: 2px;
   width: 0;
-  background-color: var(--black);
+  background-color: var(--hm-text);
   transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   z-index: 20;
 }
@@ -1170,7 +1170,7 @@ onUnmounted(() => {
   line-height: 1.6;
   padding: 16px;
   background: var(--gray-light);
-  border: 1px solid var(--gray-light);
+  border: 1px solid var(--hm-border-soft);
   border-radius: 8px;
 }
 

@@ -326,14 +326,14 @@ const startSimulation = () => {
   min-height: 100vh;
   background: var(--white);
   font-family: var(--font-sans);
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 /* 顶部导航 */
 .navbar {
   height: 60px;
   background: var(--black);
-  color: var(--white);
+  color: var(--hm-text);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -354,7 +354,7 @@ const startSimulation = () => {
 }
 
 .github-link {
-  color: var(--white);
+  color: var(--hm-text);
   text-decoration: none;
   font-family: var(--font-mono);
   font-size: 0.9rem;
@@ -434,7 +434,7 @@ const startSimulation = () => {
   font-weight: 500;
   margin: 0 0 40px 0;
   letter-spacing: -2px;
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .gradient-text {
@@ -447,7 +447,7 @@ const startSimulation = () => {
 .hero-desc {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: var(--gray-text);
+  color: var(--hm-text-muted);
   max-width: 640px;
   margin-bottom: 50px;
   font-weight: 400;
@@ -459,7 +459,7 @@ const startSimulation = () => {
 }
 
 .highlight-bold {
-  color: var(--black);
+  color: var(--hm-text);
   font-weight: 700;
 }
 
@@ -475,14 +475,14 @@ const startSimulation = () => {
   border-radius: 2px;
   font-family: var(--font-mono);
   font-size: 0.9em;
-  color: var(--black);
+  color: var(--hm-text);
   font-weight: 600;
 }
 
 .slogan-text {
   font-size: 1.2rem;
   font-weight: 520;
-  color: var(--black);
+  color: var(--hm-text);
   letter-spacing: 1px;
   border-left: 3px solid var(--orange);
   padding-left: 15px;
@@ -584,7 +584,7 @@ const startSimulation = () => {
 }
 
 .section-desc {
-  color: var(--gray-text);
+  color: var(--hm-text-muted);
   margin-bottom: 25px;
   line-height: 1.6;
 }
@@ -650,7 +650,7 @@ const startSimulation = () => {
 .step-num {
   font-family: var(--font-mono);
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
   opacity: 0.3;
 }
 
@@ -666,7 +666,7 @@ const startSimulation = () => {
 
 .step-desc {
   font-size: 0.85rem;
-  color: var(--gray-text);
+  color: var(--hm-text-muted);
 }
 
 /* 右侧交互控制台 */
@@ -828,7 +828,7 @@ const startSimulation = () => {
 .start-engine-btn {
   width: 100%;
   background: var(--black);
-  color: var(--white);
+  color: var(--hm-text);
   border: none;
   padding: 20px;
   font-family: var(--font-mono);
@@ -847,7 +847,7 @@ const startSimulation = () => {
 /* 可点击状态（非禁用） */
 .start-engine-btn:not(:disabled) {
   background: var(--black);
-  border: 1px solid var(--black);
+  border: 1px solid var(--hm-border);
   animation: pulse-border 2s infinite;
 }
 

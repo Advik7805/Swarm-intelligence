@@ -1037,7 +1037,7 @@ watch(() => props.simulationId, (newId) => {
 
 .report-tag {
   background: #000000;
-  color: var(--white);
+  color: var(--hm-text);
   font-size: 11px;
   font-weight: 700;
   padding: 4px 8px;
@@ -1387,7 +1387,7 @@ watch(() => props.simulationId, (newId) => {
 
 .tab-pill.active {
   background: var(--wf-active-text);
-  color: var(--white);
+  color: var(--hm-text);
   box-shadow: 0 2px 8px rgba(31, 41, 55, 0.15);
 }
 
@@ -1432,7 +1432,7 @@ watch(() => props.simulationId, (newId) => {
 
 .survey-pill.active {
   background: #047857;
-  color: var(--white);
+  color: var(--hm-text);
   box-shadow: 0 2px 8px rgba(4, 120, 87, 0.2);
 }
 
@@ -1470,7 +1470,7 @@ watch(() => props.simulationId, (newId) => {
 
 .tab-btn.active {
   background: var(--wf-active-text);
-  color: var(--white);
+  color: var(--hm-text);
   border-color: var(--wf-active-text);
 }
 
@@ -1505,7 +1505,7 @@ watch(() => props.simulationId, (newId) => {
   min-width: 44px;
   min-height: 44px;
   background: linear-gradient(135deg, var(--wf-active-text) 0%, #374151 100%);
-  color: var(--white);
+  color: var(--hm-text);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1657,7 +1657,7 @@ watch(() => props.simulationId, (newId) => {
   min-width: 44px;
   min-height: 44px;
   background: linear-gradient(135deg, var(--wf-active-text) 0%, #374151 100%);
-  color: var(--white);
+  color: var(--hm-text);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1799,7 +1799,7 @@ watch(() => props.simulationId, (newId) => {
 
 .target-option.active {
   background: var(--wf-active-text);
-  color: var(--white);
+  color: var(--hm-text);
   border-color: var(--wf-active-text);
 }
 
@@ -1872,7 +1872,7 @@ watch(() => props.simulationId, (newId) => {
   min-width: 32px;
   min-height: 32px;
   background: linear-gradient(135deg, var(--wf-active-text) 0%, #374151 100%);
-  color: var(--white);
+  color: var(--hm-text);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1964,7 +1964,7 @@ watch(() => props.simulationId, (newId) => {
 
 .chat-message.user .message-avatar {
   background: var(--wf-active-text);
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 .chat-message.assistant .message-avatar {
@@ -2013,7 +2013,7 @@ watch(() => props.simulationId, (newId) => {
 
 .chat-message.user .message-text {
   background: var(--wf-active-text);
-  color: var(--white);
+  color: var(--hm-text);
   border-bottom-right-radius: 4px;
 }
 
@@ -2129,7 +2129,7 @@ watch(() => props.simulationId, (newId) => {
   width: 44px;
   height: 44px;
   background: var(--wf-active-text);
-  color: var(--white);
+  color: var(--hm-text);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -2254,7 +2254,7 @@ watch(() => props.simulationId, (newId) => {
 
 .agent-checkbox.checked .checkbox-avatar {
   background: var(--wf-done-dot);
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 .checkbox-info {
@@ -2296,7 +2296,7 @@ watch(() => props.simulationId, (newId) => {
 .agent-checkbox.checked .checkbox-indicator {
   background: var(--wf-done-dot);
   border-color: var(--wf-done-dot);
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 .checkbox-indicator svg {
@@ -2357,7 +2357,7 @@ watch(() => props.simulationId, (newId) => {
   padding: 14px 24px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--white);
+  color: var(--hm-text);
   background: var(--wf-active-text);
   border: none;
   border-radius: 8px;
@@ -2384,7 +2384,7 @@ watch(() => props.simulationId, (newId) => {
   width: 18px;
   height: 18px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: var(--white);
+  border-top-color: var(--hm-text);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -2444,7 +2444,7 @@ watch(() => props.simulationId, (newId) => {
   min-width: 36px;
   min-height: 36px;
   background: var(--wf-active-text);
-  color: var(--white);
+  color: var(--hm-text);
   border-radius: 50%;
   display: flex;
   align-items: center;

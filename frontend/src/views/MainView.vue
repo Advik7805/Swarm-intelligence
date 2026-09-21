@@ -478,7 +478,7 @@ onUnmounted(() => {
 
 .switch-btn.active {
   background: var(--white);
-  color: var(--black);
+  color: var(--hm-text);
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
@@ -512,7 +512,7 @@ onUnmounted(() => {
 
 .step-name {
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .step-divider {

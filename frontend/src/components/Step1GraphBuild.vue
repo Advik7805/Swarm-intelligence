@@ -328,7 +328,7 @@ watch(() => props.systemLogs.length, () => {
 
 .step-card.active .step-num,
 .step-card.completed .step-num {
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .step-title {
@@ -346,8 +346,8 @@ watch(() => props.systemLogs.length, () => {
 }
 
 .badge.success { background: #E8F5E9; color: #2E7D32; }
-.badge.processing { background: #FF5722; color: var(--white); }
-.badge.accent { background: #FF5722; color: var(--white); }
+.badge.processing { background: #FF5722; color: var(--hm-text); }
+.badge.accent { background: #FF5722; color: var(--hm-text); }
 .badge.pending { background: var(--gray-light); color: #999; }
 
 .api-note {
@@ -448,7 +448,7 @@ watch(() => props.systemLogs.length, () => {
 .detail-type-badge {
     font-size: 9px;
     font-weight: 700;
-    color: var(--white);
+    color: var(--hm-text);
     background: var(--black);
     padding: 2px 6px;
     border-radius: 2px;
@@ -521,7 +521,7 @@ watch(() => props.systemLogs.length, () => {
 .attr-name {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 600;
-    color: var(--black);
+    color: var(--hm-text);
 }
 
 .attr-type {
@@ -588,7 +588,7 @@ watch(() => props.systemLogs.length, () => {
   display: block;
   font-size: 20px;
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -604,7 +604,7 @@ watch(() => props.systemLogs.length, () => {
 .action-btn {
   width: 100%;
   background: var(--black);
-  color: var(--white);
+  color: var(--hm-text);
   border: none;
   padding: 14px;
   border-radius: 4px;

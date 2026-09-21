@@ -1157,7 +1157,7 @@ onUnmounted(() => {
 
 .step-card.active .step-num,
 .step-card.completed .step-num {
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .step-title {
@@ -1175,7 +1175,7 @@ onUnmounted(() => {
 }
 
 .badge.success { background: #E8F5E9; color: #2E7D32; }
-.badge.processing { background: #FF5722; color: var(--white); }
+.badge.processing { background: #FF5722; color: var(--hm-text); }
 .badge.pending { background: var(--gray-light); color: #999; }
 .badge.accent { background: #E3F2FD; color: #1565C0; }
 
@@ -1217,7 +1217,7 @@ onUnmounted(() => {
 
 .action-btn.primary {
   background: var(--black);
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 .action-btn.primary:hover:not(:disabled) {
@@ -1306,7 +1306,7 @@ onUnmounted(() => {
   display: block;
   font-size: 20px;
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -1386,7 +1386,7 @@ onUnmounted(() => {
 .profile-realname {
   font-size: 14px;
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .profile-username {
@@ -1877,7 +1877,7 @@ onUnmounted(() => {
 .modal-realname {
   font-size: 20px;
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .modal-username {
@@ -2415,7 +2415,7 @@ onUnmounted(() => {
   font-family: 'JetBrains Mono', monospace;
   font-size: 24px;
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .val-unit {
@@ -2457,7 +2457,7 @@ onUnmounted(() => {
   height: 16px;
   border-radius: 50%;
   background: var(--white);
-  border: 2px solid var(--black);
+  border: 2px solid var(--hm-border);
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   transition: transform 0.1s;
@@ -2490,11 +2490,11 @@ onUnmounted(() => {
 }
 
 .mark-recommend:hover {
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .mark-recommend.active {
-  color: var(--black);
+  color: var(--hm-text);
   font-weight: 600;
 }
 
@@ -2572,7 +2572,7 @@ onUnmounted(() => {
 .highlight-tip {
   margin-top: 4px !important;
   font-size: 12px !important;
-  color: var(--black) !important;
+  color: var(--hm-text) !important;
   font-weight: 500;
   cursor: pointer;
 }

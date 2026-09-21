@@ -871,7 +871,7 @@ onUnmounted(() => {
 
 .tool-btn:hover {
   background: var(--gray-light);
-  color: var(--black);
+  color: var(--hm-text);
   border-color: #CCC;
 }
 
@@ -1265,7 +1265,7 @@ input:checked + .slider:before {
 .finished-hint .hint-icon {
   width: 18px;
   height: 18px;
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 .finished-hint .hint-text {
@@ -1283,7 +1283,7 @@ input:checked + .slider:before {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  color: var(--white);
+  color: var(--hm-text);
   transition: all 0.2s;
   margin-left: 8px;
   flex-shrink: 0;

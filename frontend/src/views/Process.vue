@@ -1300,7 +1300,7 @@ onUnmounted(() => {
 
 .action-btn:hover:not(:disabled) {
   background: var(--gray-light);
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .action-btn:disabled {
@@ -1355,7 +1355,7 @@ onUnmounted(() => {
 .loading-ring:nth-child(1) {
   width: 80px;
   height: 80px;
-  border-top-color: var(--black);
+  border-top-color: var(--hm-text);
 }
 
 .loading-ring:nth-child(2) {
@@ -1585,7 +1585,7 @@ onUnmounted(() => {
 
 .detail-value.highlight {
   font-weight: 600;
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .detail-subtitle {
@@ -1945,7 +1945,7 @@ onUnmounted(() => {
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
   margin-bottom: 4px;
 }
 

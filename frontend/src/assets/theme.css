@@ -48,11 +48,15 @@ html:root {
   --hm-grid: rgba(230, 237, 243, 0.07);
   --hm-tooltip-bg: #1C242E;
 
-  /* ---- legacy aliases (existing MiroFish-derived components) ---- */
+  /* ---- legacy aliases (upstream components) ----
+     IMPORTANT: these map to SURFACES, never to text color, so an element
+     reading `background: var(--white)` always gets a surface tone and
+     `color: var(--white)` is rewritten to --hm-text at the call site.
+     Both themes resolve sensibly — no light/dark text swapping. */
   --black: var(--hm-bg);
-  --white: var(--hm-text);
+  --white: var(--hm-surface);
   --orange: var(--hm-accent);
-  --gray-light: var(--hm-surface);
+  --gray-light: var(--hm-bg-soft);
   --gray-text: var(--hm-text-muted);
   --border: var(--hm-border);
 

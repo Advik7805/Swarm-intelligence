@@ -764,7 +764,7 @@ onUnmounted(() => {
   margin-top: 8px;
   padding: 10px 14px;
   background: var(--black);
-  color: var(--white);
+  color: var(--hm-text);
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 0;
@@ -812,7 +812,7 @@ onUnmounted(() => {
   padding: 3px 8px;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 2px;
-  color: var(--white);
+  color: var(--hm-text);
   letter-spacing: 0.03em;
 }
 
@@ -826,13 +826,13 @@ onUnmounted(() => {
 .platform-name {
   font-size: 11px;
   font-weight: 700;
-  color: var(--black);
+  color: var(--hm-text);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.platform-status.twitter .platform-icon { color: var(--black); }
-.platform-status.reddit .platform-icon { color: var(--black); }
+.platform-status.twitter .platform-icon { color: var(--hm-text); }
+.platform-status.reddit .platform-icon { color: var(--hm-text); }
 
 .platform-stats {
   display: flex;
@@ -890,7 +890,7 @@ onUnmounted(() => {
 
 .action-btn.primary {
   background: var(--black);
-  color: var(--white);
+  color: var(--hm-text);
 }
 
 .action-btn.primary:hover:not(:disabled) {
@@ -952,8 +952,8 @@ onUnmounted(() => {
 }
 
 .breakdown-divider { color: #DDD; }
-.breakdown-item.twitter { color: var(--black); }
-.breakdown-item.reddit { color: var(--black); }
+.breakdown-item.twitter { color: var(--hm-text); }
+.breakdown-item.reddit { color: var(--hm-text); }
 
 /* --- Timeline Feed --- */
 .timeline-feed {
@@ -1007,8 +1007,8 @@ onUnmounted(() => {
 
 .timeline-item.twitter .marker-dot { background: var(--black); }
 .timeline-item.reddit .marker-dot { background: var(--black); }
-.timeline-item.twitter .timeline-marker { border-color: var(--black); }
-.timeline-item.reddit .timeline-marker { border-color: var(--black); }
+.timeline-item.twitter .timeline-marker { border-color: var(--hm-text); }
+.timeline-item.reddit .timeline-marker { border-color: var(--hm-text); }
 
 /* Card Layout */
 .timeline-card {
@@ -1067,7 +1067,7 @@ onUnmounted(() => {
   width: 24px;
   height: 24px;
   background: var(--black);
-  color: var(--white);
+  color: var(--hm-text);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1080,7 +1080,7 @@ onUnmounted(() => {
 .agent-name {
   font-size: 13px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 .header-meta {
@@ -1121,7 +1121,7 @@ onUnmounted(() => {
 
 .content-text.main-text {
   font-size: 14px;
-  color: var(--black);
+  color: var(--hm-text);
 }
 
 /* Info Blocks (Quote, Repost, etc) */
@@ -1260,7 +1260,7 @@ onUnmounted(() => {
   width: 14px;
   height: 14px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: var(--white);
+  border-top-color: var(--hm-text);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin-right: 6px;

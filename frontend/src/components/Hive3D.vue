@@ -25,16 +25,21 @@ onMounted(() => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
 
   const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(46, 1, 0.1, 100)
-  camera.position.set(0, 2.6, 11)
+  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100)
+  camera.position.set(0, 3.4, 17)
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   // ---------- theme colors ----------
   let accent = new THREE.Color('#F0A500')
+  const fog = new THREE.Fog(new THREE.Color('#0D1117'), 15, 34)
+  scene.fog = fog
   const readTheme = () => {
-    const v = getComputedStyle(document.documentElement).getPropertyValue('--hm-accent').trim()
+    const cs = getComputedStyle(document.documentElement)
+    const v = cs.getPropertyValue('--hm-accent').trim()
     if (v) accent = new THREE.Color(v)
+    const bg = cs.getPropertyValue('--hm-bg').trim()
+    if (bg) fog.color = new THREE.Color(bg)
   }
   readTheme()
   const themeObs = new MutationObserver(readTheme)
@@ -44,7 +49,7 @@ onMounted(() => {
   const hive = new THREE.Group()
   const cells = []
   const R = 1.02                       // cell radius
-  const N_RING = 3                     // cluster rings (19 cells)
+  const N_RING = 2                     // cluster rings (19 cells)
   const hexGeo = new THREE.CylinderGeometry(R * 0.94, R * 0.94, 0.55, 6)
   const posSet = new Set()
   const ax = (q, r) => ({ x: R * 1.74 * (q + r / 2), z: R * 1.5 * r })
@@ -57,7 +62,7 @@ onMounted(() => {
     const [x, z] = key.split(',').map(Number)
     const isCenter = Math.abs(x) < 0.01 && Math.abs(z) < 0.01
     const mat = new THREE.MeshBasicMaterial({
-      color: accent, transparent: true, opacity: isCenter ? 0.10 : 0.045,
+      color: accent, transparent: true, opacity: isCenter ? 0.07 : 0.028,
     })
     const mesh = new THREE.Mesh(hexGeo, mat)
     mesh.position.set(x, 0, z)
@@ -65,7 +70,7 @@ onMounted(() => {
     const edges = new THREE.LineSegments(
       new THREE.EdgesGeometry(hexGeo),
       new THREE.LineBasicMaterial({
-        color: accent, transparent: true, opacity: isCenter ? 0.95 : 0.35,
+        color: accent, transparent: true, opacity: isCenter ? 0.85 : 0.22,
       })
     )
     mesh.add(edges)
@@ -73,11 +78,12 @@ onMounted(() => {
     hive.add(mesh)
     cells.push(mesh)
   }
+  hive.position.x = 2.4
   hive.rotation.y = 0.4
   scene.add(hive)
 
   // ---------- orbiting agent swarm ----------
-  const N_AGENTS = 700
+  const N_AGENTS = 480
   const pGeo = new THREE.BufferGeometry()
   const positions = new Float32Array(N_AGENTS * 3)
   const seeds = new Float32Array(N_AGENTS * 3)   // radius, speed, phase
@@ -88,7 +94,7 @@ onMounted(() => {
   }
   pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
   const pMat = new THREE.PointsMaterial({
-    color: accent, size: 0.055, transparent: true, opacity: 0.75,
+    color: accent, size: 0.048, transparent: true, opacity: 0.5,
     sizeAttenuation: true, depthWrite: false,
   })
   const swarm = new THREE.Points(pGeo, pMat)
@@ -139,7 +145,7 @@ onMounted(() => {
     }
     pGeo.attributes.position.needsUpdate = true
 
-    hive.rotation.y = 0.4 + t * 0.12
+    hive.rotation.y = 0.4 + t * 0.08
     swarm.rotation.y = -t * 0.05
 
     // parallax camera
