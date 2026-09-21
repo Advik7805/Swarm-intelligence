@@ -23,5 +23,19 @@ export default defineConfig({
         secure: false
       }
     }
+  },
+  // `vite preview` serves the production build (dist/) — used for the
+  // live preview and matches exactly what Vercel will serve.
+  preview: {
+    port: 3000,
+    host: true,
+    allowedHosts: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5001',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   }
 })
