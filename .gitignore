@@ -58,3 +58,8 @@ backend/uploads/
 
 # Docker 数据
 data/
+# HiveMind runtime artifacts (databases, uploads anywhere in the tree)
+**/uploads/
+*.db
+*.db-shm
+*.db-wal
