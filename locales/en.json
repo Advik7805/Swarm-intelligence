@@ -815,7 +815,7 @@
     "detailStatusFailed": "Failed to get detailed status"
   },
   "step4x": {
-    "noReplyPlatform": "(this platform received no reply)",
+    "noReplyPlatform": "(no reply on this platform)",
     "noReply": "[no reply]",
     "selectionReason": "Selection reason",
     "waitingStart": "Waiting to start",
