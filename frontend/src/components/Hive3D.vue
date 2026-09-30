@@ -101,6 +101,23 @@ onMounted(() => {
   swarm.rotation.x = 0.5
   scene.add(swarm)
 
+  // ---------- energy pulses (sparks traveling between cells) ----------
+  const N_PULSES = 12
+  const pulseGeo = new THREE.BufferGeometry()
+  pulseGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(N_PULSES * 3), 3))
+  const pulseMat = new THREE.PointsMaterial({
+    color: new THREE.Color('#ffd97a'), size: 0.16, transparent: true, opacity: 0.95,
+    sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  })
+  const pulses = new THREE.Points(pulseGeo, pulseMat)
+  scene.add(pulses)
+  const pulseState = []
+  const cellXZ = cells.map((c) => ({ x: c.position.x + hive.position.x, z: c.position.z }))
+  const randCell = () => cellXZ[(Math.random() * cellXZ.length) | 0]
+  for (let i = 0; i < N_PULSES; i++) {
+    pulseState.push({ from: randCell(), to: randCell(), t: Math.random(), speed: 0.25 + Math.random() * 0.5 })
+  }
+
   // ---------- size / resize ----------
   const resize = () => {
     const w = canvas.clientWidth || 1
@@ -145,12 +162,39 @@ onMounted(() => {
     }
     pGeo.attributes.position.needsUpdate = true
 
+    // pulses travel between cells, then pick a new pair
+    const parr = pulseGeo.attributes.position.array
+    for (let i = 0; i < N_PULSES; i++) {
+      const s = pulseState[i]
+      s.t += 0.016 * s.speed
+      if (s.t >= 1) {
+        s.t = 0
+        s.from = s.to
+        s.to = randCell()
+      }
+      const e = s.t * s.t * (3 - 2 * s.t) // smoothstep ease
+      parr[i * 3] = s.from.x + (s.to.x - s.from.x) * e
+      parr[i * 3 + 1] = 0.3 + Math.sin(e * Math.PI) * 0.5
+      parr[i * 3 + 2] = s.from.z + (s.to.z - s.from.z) * e
+    }
+    pulseGeo.attributes.position.needsUpdate = true
+    pulseMat.opacity = 0.55 + Math.sin(t * 2.4) * 0.35
+
     hive.rotation.y = 0.4 + t * 0.08
     swarm.rotation.y = -t * 0.05
 
-    // parallax camera
-    camera.position.x += (pointer.x * 1.4 - camera.position.x) * 0.04
-    camera.position.y += (2.6 - pointer.y * 1.0 - camera.position.y) * 0.04
+    // breathing center-cell glow
+    if (cells[0]?.userData.isCenter) {
+      const center = cells[0]
+      center.material.opacity = 0.07 + Math.sin(t * 1.8) * 0.035
+      center.children[0].material.opacity = 0.85 + Math.sin(t * 1.8) * 0.12
+    }
+
+    // autonomous drift + parallax camera
+    const driftX = Math.sin(t * 0.11) * 2.2
+    const driftY = Math.sin(t * 0.07 + 1.2) * 0.6
+    camera.position.x += (driftX + pointer.x * 1.4 - camera.position.x) * 0.04
+    camera.position.y += (2.6 + driftY - pointer.y * 1.0 - camera.position.y) * 0.04
     camera.lookAt(0, 0, 0)
 
     renderer.render(scene, camera)

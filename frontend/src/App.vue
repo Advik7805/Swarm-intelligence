@@ -3,7 +3,13 @@
 </template>
 
 <script setup>
-// Page management via Vue Router
+import { onMounted } from 'vue'
+import { startCursorTrail } from './utils/cursorTrail'
+
+onMounted(() => {
+  // global cursor trail (respects reduced-motion + touch devices)
+  startCursorTrail()
+})
 </script>
 
 <style>
