@@ -770,7 +770,32 @@
     "buildDoneLoading": "构建完成 — 正在加载图谱…",
     "waitingGraph": "等待图谱数据…",
     "unnamed": "未命名",
-    "unknown": "未知"
+    "unknown": "未知",
+    "process": {
+      "buildFlow": "构建流程",
+      "apiNotes": "接口说明",
+      "genProgress": "生成进度",
+      "buildProgress": "构建进度",
+      "buildResult": "构建结果",
+      "entityTypes": "实体类型",
+      "projectInfo": "项目信息",
+      "projectName": "项目名称",
+      "graphId": "图谱ID",
+      "waitingOntology": "等待本体生成",
+      "autoStartHint": "生成完成后将自动开始构建图谱",
+      "dataIncoming": "数据即将显示…",
+      "realtimeUpdating": "实时更新中…",
+      "readyNextStep": "准备进入下一步骤",
+      "enterEnvSetup": "进入环境搭建",
+      "ontologyDone": "本体生成",
+      "fullScreen": "全屏显示",
+      "exitFullScreen": "退出全屏",
+      "phaseUpload": "上传中",
+      "phaseOntology": "本体生成中",
+      "phaseBuild": "图谱构建",
+      "phaseDone": "完成",
+      "generatedEntityTypes": "生成的实体类型"
+    }
   },
   "step1x": {
     "missingProjectOrGraph": "缺少项目或图谱信息",

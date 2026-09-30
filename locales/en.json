@@ -770,7 +770,32 @@
     "buildDoneLoading": "Build complete — loading graph…",
     "waitingGraph": "Waiting for graph data…",
     "unnamed": "Untitled",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "process": {
+      "buildFlow": "Build Pipeline",
+      "apiNotes": "API",
+      "genProgress": "Generation progress",
+      "buildProgress": "Build progress",
+      "buildResult": "Build result",
+      "entityTypes": "Entity types",
+      "projectInfo": "Project Info",
+      "projectName": "Project name",
+      "graphId": "Graph ID",
+      "waitingOntology": "Waiting for ontology generation",
+      "autoStartHint": "Graph build starts automatically once generation completes",
+      "dataIncoming": "Data will appear here shortly…",
+      "realtimeUpdating": "Live updating…",
+      "readyNextStep": "Ready for the next step",
+      "enterEnvSetup": "Enter Environment Setup",
+      "ontologyDone": "Ontology",
+      "fullScreen": "Fullscreen",
+      "exitFullScreen": "Exit fullscreen",
+      "phaseUpload": "Uploading",
+      "phaseOntology": "Generating ontology",
+      "phaseBuild": "Graph build",
+      "phaseDone": "Complete",
+      "generatedEntityTypes": "Generated entity types"
+    }
   },
   "step1x": {
     "missingProjectOrGraph": "Missing project or graph info",

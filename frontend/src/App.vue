@@ -3,11 +3,11 @@
 </template>
 
 <script setup>
-// 使用 Vue Router 来管理页面
+// Page management via Vue Router
 </script>
 
 <style>
-/* 全局样式重置 */
+/* Global style reset */
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +23,7 @@
   min-height: 100vh;
 }
 
-/* 全局按钮样式 */
+/* Global button style */
 button {
   font-family: inherit;
 }

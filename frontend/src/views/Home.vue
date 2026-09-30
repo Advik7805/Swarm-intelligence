@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <!-- 顶部导航栏 -->
+    <!-- Top navigation bar -->
     <nav class="navbar">
       <div class="nav-brand">
         <img src="../assets/logo/hivemind_logo_left.png" alt="HiveMind" class="nav-logo" />
@@ -16,7 +16,7 @@
     </nav>
 
     <div class="main-content">
-      <!-- 上半部分：Hero 区域 -->
+      <!-- Top half: hero section -->
       <section class="hero-section">
         <Hive3D />
         <div class="hero-left">
@@ -58,9 +58,9 @@
         </div>
       </section>
 
-      <!-- 下半部分：双栏布局 -->
+      <!-- Bottom half: two-column layout -->
       <section class="dashboard-section">
-        <!-- 左栏：状态与步骤 -->
+        <!-- Left column: status & workflow -->
         <div class="left-panel" v-reveal>
           <div class="panel-header">
             <span class="status-dot">■</span> {{ $t('home.systemStatus') }}
@@ -71,7 +71,7 @@
             {{ $t('home.systemReadyDesc') }}
           </p>
           
-          <!-- 数据指标卡片 -->
+          <!-- Metric cards -->
           <div class="metrics-row">
             <div class="metric-card" v-reveal="200">
               <div class="metric-value">{{ $t('home.metricLowCost') }}</div>
@@ -83,7 +83,7 @@
             </div>
           </div>
 
-          <!-- 项目模拟步骤介绍 (新增区域) -->
+          <!-- Simulation workflow steps -->
           <div class="steps-container">
             <div class="steps-header">
                <span class="diamond-icon">◇</span> {{ $t('home.workflowSequence') }}
@@ -128,10 +128,10 @@
           </div>
         </div>
 
-        <!-- 右栏：交互控制台 -->
+        <!-- Right column: interaction console -->
         <div class="right-panel" v-reveal="120">
           <div class="console-box">
-            <!-- 上传区域 -->
+            <!-- Upload zone -->
             <div class="console-section">
               <div class="console-header">
                 <span class="console-label">{{ $t('home.realitySeed') }}</span>
@@ -172,12 +172,12 @@
               </div>
             </div>
 
-            <!-- 分割线 -->
+            <!-- Divider -->
             <div class="console-divider">
               <span>{{ $t('home.inputParams') }}</span>
             </div>
 
-            <!-- 输入区域 -->
+            <!-- Input area -->
             <div class="console-section">
               <div class="console-header">
                 <span class="console-label">{{ $t('home.simulationPrompt') }}</span>
@@ -194,7 +194,7 @@
               </div>
             </div>
 
-            <!-- 启动按钮 -->
+            <!-- Launch button -->
             <div class="console-section btn-section">
               <button 
                 class="start-engine-btn"
@@ -210,7 +210,7 @@
         </div>
       </section>
 
-      <!-- 历史项目数据库 -->
+      <!-- History project database -->
       <HistoryDatabase />
     </div>
   </div>
@@ -226,41 +226,41 @@ import Hive3D from '../components/Hive3D.vue'
 
 const router = useRouter()
 
-// 表单数据
+// Form data
 const formData = ref({
   simulationRequirement: ''
 })
 
-// 文件列表
+// File list
 const files = ref([])
 
-// 状态
+// UI state
 const loading = ref(false)
 const error = ref('')
 const isDragOver = ref(false)
 
-// 文件输入引用
+// File input ref
 const fileInput = ref(null)
 
-// 计算属性:是否可以提交
+// Computed: can submit?
 const canSubmit = computed(() => {
   return formData.value.simulationRequirement.trim() !== '' && files.value.length > 0
 })
 
-// 触发文件选择
+// Trigger file picker
 const triggerFileInput = () => {
   if (!loading.value) {
     fileInput.value?.click()
   }
 }
 
-// 处理文件选择
+// Handle file selection
 const handleFileSelect = (event) => {
   const selectedFiles = Array.from(event.target.files)
   addFiles(selectedFiles)
 }
 
-// 处理拖拽相关
+// Drag & drop handlers
 const handleDragOver = (e) => {
   if (!loading.value) {
     isDragOver.value = true
@@ -279,7 +279,7 @@ const handleDrop = (e) => {
   addFiles(droppedFiles)
 }
 
-// 添加文件
+// Add files
 const addFiles = (newFiles) => {
   const validFiles = newFiles.filter(file => {
     const ext = file.name.split('.').pop().toLowerCase()
@@ -288,12 +288,12 @@ const addFiles = (newFiles) => {
   files.value.push(...validFiles)
 }
 
-// 移除文件
+// Remove file
 const removeFile = (index) => {
   files.value.splice(index, 1)
 }
 
-// 滚动到底部
+// Scroll to bottom
 const scrollToBottom = () => {
   window.scrollTo({
     top: document.body.scrollHeight,
@@ -301,15 +301,15 @@ const scrollToBottom = () => {
   })
 }
 
-// 开始模拟 - 立即跳转，API调用在Process页面进行
+// Start simulation - navigate immediately; API calls happen on the Process page
 const startSimulation = () => {
   if (!canSubmit.value || loading.value) return
   
-  // 存储待上传的数据
+  // stash the pending upload data
   import('../store/pendingUpload.js').then(({ setPendingUpload }) => {
     setPendingUpload(files.value, formData.value.simulationRequirement)
     
-    // 立即跳转到Process页面（使用特殊标识表示新建项目）
+    // navigate to the Process page right away (special id marks a new project)
     router.push({
       name: 'Process',
       params: { projectId: 'new' }
@@ -329,7 +329,7 @@ const startSimulation = () => {
   color: var(--hm-text);
 }
 
-/* 顶部导航 */
+/* Top navigation */
 .navbar {
   height: 60px;
   background: var(--black);
@@ -373,14 +373,14 @@ const startSimulation = () => {
   font-family: sans-serif;
 }
 
-/* 主要内容区 */
+/* Main content area */
 .main-content {
   max-width: 1400px;
   margin: 0 auto;
   padding: 60px 40px;
 }
 
-/* Hero 区域 */
+/* Hero section */
 .hero-section {
   display: flex;
   justify-content: space-between;
@@ -542,7 +542,7 @@ const startSimulation = () => {
   border-color: var(--orange);
 }
 
-/* Dashboard 双栏布局 */
+/* Dashboard two-column layout */
 .dashboard-section {
   display: flex;
   gap: 60px;
@@ -557,7 +557,7 @@ const startSimulation = () => {
   flex-direction: column;
 }
 
-/* 左侧面板 */
+/* Left panel */
 .left-panel {
   flex: 0.8;
 }
@@ -613,7 +613,7 @@ const startSimulation = () => {
   color: #999;
 }
 
-/* 项目模拟步骤介绍 */
+/* Simulation workflow steps */
 .steps-container {
   border: 1px solid var(--border);
   padding: 30px;
@@ -669,14 +669,14 @@ const startSimulation = () => {
   color: var(--hm-text-muted);
 }
 
-/* 右侧交互控制台 */
+/* Right interaction console */
 .right-panel {
   flex: 1.2;
 }
 
 .console-box {
-  border: 1px solid #CCC; /* 外部实线 */
-  padding: 8px; /* 内边距形成双重边框感 */
+  border: 1px solid #CCC; /* outer solid line */
+  padding: 8px; /* inner padding creates the double-border feel */
 }
 
 .console-section {
@@ -844,7 +844,7 @@ const startSimulation = () => {
   overflow: hidden;
 }
 
-/* 可点击状态（非禁用） */
+/* Clickable state (not disabled) */
 .start-engine-btn:not(:disabled) {
   background: var(--black);
   border: 1px solid var(--hm-border);
@@ -869,14 +869,14 @@ const startSimulation = () => {
   border: 1px solid var(--border);
 }
 
-/* 引导动画：微妙的边框脉冲 */
+/* Guide animation: subtle border pulse */
 @keyframes pulse-border {
   0% { box-shadow: 0 0 0 0 var(--hm-glow); }
   70% { box-shadow: 0 0 0 6px rgba(240, 165, 0, 0); }
   100% { box-shadow: 0 0 0 0 rgba(240, 165, 0, 0); }
 }
 
-/* 响应式适配 */
+/* Responsive adjustments */
 @media (max-width: 1024px) {
   .dashboard-section {
     flex-direction: column;
