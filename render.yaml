@@ -1,0 +1,19 @@
+# One-click Render blueprint for the HIVE MIND backend.
+# Frontend: deploy apps/web on Vercel, set NEXT_PUBLIC_API_BASE to this service's URL.
+services:
+  - type: web
+    name: hive-mind-api
+    runtime: python
+    plan: free
+    rootDir: apps/api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn hivemind.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DEMO_MODE
+        value: auto
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_BASE_URL
+        sync: false
+      - key: LLM_MODEL_NAME
+        sync: false

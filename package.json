@@ -1,0 +1,14 @@
+{
+  "name": "hive-mind",
+  "version": "0.1.0",
+  "private": true,
+  "description": "HIVE MIND — a swarm intelligence prediction engine. Simulate thousands of agents, rehearse the future.",
+  "scripts": {
+    "setup": "npm --prefix apps/web install && (cd apps/api && (python3 -m venv .venv && ./.venv/bin/pip install -r requirements.txt || pip install -r requirements.txt))",
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "npm --prefix apps/web run dev",
+    "dev:api": "cd apps/api && (./.venv/bin/uvicorn hivemind.main:app --host 0.0.0.0 --port 8000 --reload || uvicorn hivemind.main:app --host 0.0.0.0 --port 8000 --reload)",
+    "smoke": "bash scripts/smoke.sh"
+  },
+  "engines": { "node": ">=18.18", "python": ">=3.11" }
+}

@@ -1,0 +1,24 @@
+services:
+  api:
+    build: ./apps/api
+    environment:
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - LLM_BASE_URL=${LLM_BASE_URL:-}
+      - LLM_MODEL_NAME=${LLM_MODEL_NAME:-}
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - api-data:/app/data
+
+  web:
+    build: ./apps/web
+    environment:
+      - API_ORIGIN=http://api:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+volumes:
+  api-data:
