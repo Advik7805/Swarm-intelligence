@@ -75,7 +75,7 @@ function AgentMeshes({ agents, positions, activeIds, hovered, selected, onHover,
       dummy.updateMatrix();
       mesh.current.setMatrixAt(i, dummy.matrix);
       const base = new THREE.Color(FACTION_COLORS[a.faction % FACTION_COLORS.length]);
-      const dim = activeIds.size === 0 ? 1.0 : activeIds.has(a.id) ? 1.0 : 0.28;
+      const dim = activeIds.size === 0 ? 1.0 : activeIds.has(a.id) ? 1.0 : 0.38;
       color.copy(base).multiplyScalar(dim);
       mesh.current.setColorAt(i, color);
     });
@@ -100,7 +100,7 @@ function AgentMeshes({ agents, positions, activeIds, hovered, selected, onHover,
         if (idx !== undefined && agents[idx]) onSelect(agents[idx].id);
       }}
     >
-      <icosahedronGeometry args={[0.11, 1]} />
+      <icosahedronGeometry args={[0.14, 1]} />
       <meshStandardMaterial roughness={0.25} metalness={0.1} toneMapped={false} />
     </instancedMesh>
   );

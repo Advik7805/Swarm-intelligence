@@ -158,7 +158,7 @@ async def control(rid: str, req: ControlRequest) -> dict:
     if req.action == "pause":
         await engine.pause()
     elif req.action == "resume":
-        await engine.resume()
+        await engine.extend(req.rounds or 20)
     elif req.action == "stop":
         await engine.stop()
     elif req.action == "setSpeed" and req.speed:

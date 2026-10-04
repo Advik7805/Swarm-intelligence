@@ -94,6 +94,7 @@ class SimulationEngine:
         self.stop_flag = False
         self.control_q: asyncio.Queue = asyncio.Queue()
         self.total_actions = 0
+        self.task: asyncio.Task | None = None
         self.bus = get_bus(run["id"])
 
     # ── controls (called from API handlers) ──────────────────────────
@@ -104,6 +105,30 @@ class SimulationEngine:
     async def resume(self) -> None:
         self.paused.set()
         self._set_status("running")
+
+    async def extend(self, extra_rounds: int = 20) -> None:
+        """Continue a finished run with more rounds (God's-eye continuation)."""
+        status = self.run_meta["status"]
+        if status == "running":
+            return
+        if status == "paused":
+            await self.resume()
+            return
+        try:
+            extra = max(1, min(100, int(extra_rounds or 20)))
+        except (TypeError, ValueError):
+            extra = 20
+        base = max(self.run_meta["round"], self.run_meta["rounds"])
+        self.run_meta["rounds"] = base + extra
+        self.run_meta["report"] = None  # stale — reporter regenerates on demand
+        self.stop_flag = False
+        self.paused.set()
+        store.put_run(self.run_meta)
+        project = store.get_project(self.run_meta["projectId"])
+        if project:
+            project["status"] = "simulating"
+            store.put_project(project)
+        self.task = asyncio.create_task(self._run_from(self.run_meta["round"] + 1))
 
     async def stop(self) -> None:
         self.stop_flag = True
@@ -260,10 +285,12 @@ class SimulationEngine:
 
     # ── main loop ────────────────────────────────────────────────────
     async def run(self) -> None:
-        rounds = self.run_meta["rounds"]
+        await self._run_from(1)
+
+    async def _run_from(self, start_round: int) -> None:
         self._set_status("running")
         try:
-            for r in range(1, rounds + 1):
+            for r in range(start_round, self.run_meta["rounds"] + 1):
                 if self.stop_flag:
                     self._finish(r - 1, stopped=True)
                     return
@@ -273,7 +300,7 @@ class SimulationEngine:
                 shock = self._shock_now()
 
                 self.run_meta["round"] = r
-                self.bus.publish("round_started", {"round": r, "rounds": rounds})
+                self.bus.publish("round_started", {"round": r, "rounds": self.run_meta["rounds"]})
 
                 n_active = min(MAX_BATCH, max(8, int(0.3 * len(self.personas))))
                 picks = rng.choices(range(len(self.personas)),
@@ -295,7 +322,7 @@ class SimulationEngine:
                 self._persist()
                 self._decay_shocks()
                 await asyncio.sleep(min(2.0, max(0.01, 1.0 / float(self.run_meta["speed"]))))
-            self._finish(rounds, stopped=False)
+            self._finish(self.run_meta["rounds"], stopped=False)
         except Exception as e:
             self._set_status("failed")
             self.bus.publish("error", {"message": f"simulation failed: {e}"})
@@ -319,6 +346,10 @@ class SimulationEngine:
         }
         self.run_meta["summary"] = summary
         self._set_status("stopped" if stopped else "complete")
+        project = store.get_project(self.run_meta["projectId"])
+        if project:
+            project["status"] = "complete"
+            store.put_project(project)
         self.bus.publish("run_complete", {"summary": {k: v for k, v in summary.items() if k != "personas"}})
 
     def _last_actions(self, up_to_round: int) -> list[dict]:
@@ -333,5 +364,5 @@ async def start_engine(run: dict, project: dict) -> SimulationEngine:
     engine = SimulationEngine(run, project)
     engines[run["id"]] = engine
     store.put_run(run)
-    asyncio.create_task(engine.run())
+    engine.task = asyncio.create_task(engine.run())
     return engine
