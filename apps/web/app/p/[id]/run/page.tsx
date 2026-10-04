@@ -91,7 +91,6 @@ function MissionControl() {
   }, [runStore.playing, runStore.scrubRound, runStore.playbackSpeed]);
 
   const displayRound = runStore.scrubRound ?? runStore.latestRound;
-  const live = runStore.status === "running" || runStore.status === "paused" || runStore.status === "queued";
 
   const latestMetrics = runStore.metricSeries[runStore.metricSeries.length - 1];
   const feedActions = useMemo(() => {
@@ -203,16 +202,16 @@ function MissionControl() {
         )}
 
         <div className="flex w-80 shrink-0 flex-col gap-3 overflow-y-auto max-lg:hidden">
-          <SentimentChart series={runStore.metricSeries} />
-          <FactionBar shares={latestMetrics?.factionShares ?? {}} />
-          <Influencers list={latestMetrics?.topInfluencers ?? []} onFocus={focusAgent} />
+          <div className="shrink-0"><SentimentChart series={runStore.metricSeries} /></div>
+          <div className="shrink-0"><FactionBar shares={latestMetrics?.factionShares ?? {}} /></div>
+          <div className="shrink-0"><Influencers list={latestMetrics?.topInfluencers ?? []} onFocus={focusAgent} /></div>
           <ActivityFeed actions={feedActions} onPick={focusAgent} />
         </div>
       </div>
 
       {/* bottom strip */}
       <div className="space-y-3 px-3 pb-3">
-        <InjectConsole runId={runId} live={live} />
+        <InjectConsole runId={runId} status={runStore.status} />
         <Timeline
           latest={runStore.latestRound}
           scrub={runStore.scrubRound}

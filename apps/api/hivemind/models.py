@@ -29,6 +29,7 @@ class ControlRequest(BaseModel):
     action: Literal["pause", "resume", "stop", "setSpeed", "injectEvent"]
     speed: float | None = Field(default=None, gt=0, le=100)
     text: str | None = Field(default=None, max_length=500)
+    rounds: int | None = Field(default=None, ge=1, le=100)  # for resume-after-finish
 
 
 class ChatRequest(BaseModel):

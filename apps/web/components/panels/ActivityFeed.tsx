@@ -19,7 +19,7 @@ export default function ActivityFeed({ actions, onPick }: {
 }) {
   const latest = actions.slice() /* copy */ .reverse().slice(0, 60);
   return (
-    <Panel title="live activity" className="flex min-h-0 flex-1 flex-col">
+    <Panel title="live activity" className="flex min-h-[260px] flex-1 flex-col">
       <div className="-mr-1 min-h-0 flex-1 space-y-2 overflow-y-auto pr-1">
         {latest.length === 0 && <p className="text-xs text-muted-fg">The swarm is warming up…</p>}
         {latest.map((a) => {
